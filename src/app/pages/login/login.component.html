@@ -1,4 +1,4 @@
-<section class="row" style="background-color: #42A5F5; height: 100vh; padding-top: 20%">
+<section class="row" style="background-color: #42A5F5; height: 100vh">
     <!--<div class="offset-sm-2 col-sm-3">-->
 
     <!--<h2 style=" color: white !important; display: inline;">Argus App</h2>-->
@@ -11,8 +11,8 @@
     <!--href="https://tecnologiasintech.com" style="color: white;">Tecnologías Intech</a></p>-->
     <!--</div>-->
     <div class="offset-sm-4 col-sm-4" align="center">
-        <div class="card p-3"
-             style="height: 400px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
+        <div class="card p-3 m-t-20"
+             style="height: 500px; padding-left: 0 !important;padding-right: 0 !important; margin-top:50px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
 
             <div class="card-header">
                 <ul class="nav nav-tabs">
@@ -23,8 +23,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item {{ view == 'registrate' ? 'active':'' }}" >
-                        <a class="nav-link {{ view == 'registrate' ? 'active':'' }}"  (click)="view = 'registrate'">
+                    <li class="nav-item {{ view == 'registrate' ? 'active':'' }}">
+                        <a class="nav-link {{ view == 'registrate' ? 'active':'' }}" (click)="view = 'registrate'">
                             <span>Registrate</span>
                         </a>
                     </li>
@@ -32,7 +32,8 @@
                 </ul>
             </div>
 
-            <div class="card-body ml-3 mr-3" align="left">
+            <div class="card-body ml-3 mr-3" style="margin-left: 30px!important;margin-right: 30px!important;"
+                 align="left">
 
                 <div *ngIf="view == 'login'">
 
@@ -45,7 +46,7 @@
                     <div class="form-group form-group--float">
                         <input class="form-control p-3" formControlFloat type="password"
                         >
-                        <label >Contraseña</label>
+                        <label>Contraseña</label>
                         <i class="form-group__bar"></i>
                     </div>
 
@@ -59,16 +60,67 @@
 
                 <div *ngIf="view == 'registrate'">
 
+                    <!--formulario de registrate-->
+                    <div class="row">
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input class="form-control p-3" type="text" formControlFloat autofocus>
+                                <label style=""><i class="zmdi zmdi-email IconSpace"></i> Correo electrónico</label>
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input class="form-control p-3" type="tel" formControlFloat autofocus>
+                                <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input type="text" class="form-control p-3" type="password" fromControlFloat autofocus>
+                                <label><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                        <div class="col-1" style="margin-top: 45px">
+                            <i class="zmdi zmdi-eye-off cursor-pointer" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="!ShowPassRegister"></i>
+                            <i class="zmdi zmdi-eye cursor-pointer" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="ShowPassRegister"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input type="{{ShowVerifyPass? 'text':'password'}}" class="form-control p-3" type="password" fromControlFloat autofocus>
+                                <label><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                        <div class="col-1" style="margin-top: 45px">
+                            <i class="zmdi zmdi-eye-off cursor-pointer"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="!ShowVerifyPass"></i>
+                            <i class="zmdi zmdi-eye cursor-pointer"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="ShowVerifyPass"></i>
+                        </div>
+                    </div>
 
+
+
+
+
+                    <div align="right" style="margin-top: 20px;">
+                        <button class="btn btn-success btn-lg " style=" border-radius: 5px 5px 5px 5px;">Registrate
+                        </button>
+                    </div>
 
                 </div>
-
             </div>
 
-            <div class="card-footer">
+            <div class="card-footer" style="padding-right: 0;padding-left: 0;">
 
-                <div class="authSocial">
-
+                <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%">
 
 
                 </div>
