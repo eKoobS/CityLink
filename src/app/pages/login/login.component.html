@@ -98,27 +98,27 @@
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input type="{{ShowPassRegister? 'text':'password'}}" class="form-control p-3" type="password" fromControlFloat autofocus>
+                                <input type="{{ShowPassRegister? 'text':'password'}}" class="form-control p-3" type="password" formControlFloat autofocus>
                                 <label><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
                                 <i class="form-group__bar"></i>
                             </div>
                         </div>
                         <div class="col-1 marginTopIconView">
-                            <i class="zmdi zmdi-eye-off cursor-pointer" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="!ShowPassRegister"></i>
-                            <i class="zmdi zmdi-eye cursor-pointer" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="ShowPassRegister"></i>
+                            <i class="zmdi zmdi-eye-off cursor-pointer zmdi-hc-lg" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="!ShowPassRegister"></i>
+                            <i class="zmdi zmdi-eye cursor-pointer zmdi-hc-lg" (click)="ShowPassRegister=!ShowPassRegister" *ngIf="ShowPassRegister"></i>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input type="{{ShowVerifyPass? 'text':'password'}}" class="form-control p-3" type="password" fromControlFloat autofocus>
+                                <input type="{{ShowVerifyPass? 'text':'password'}}" class="form-control p-3" type="password" formControlFloat autofocus>
                                 <label><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
                                 <i class="form-group__bar"></i>
                             </div>
                         </div>
                         <div class="col-1 marginTopIconView">
-                            <i class="zmdi zmdi-eye-off cursor-pointer"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="!ShowVerifyPass"></i>
-                            <i class="zmdi zmdi-eye cursor-pointer"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="ShowVerifyPass"></i>
+                            <i class="zmdi zmdi-eye-off cursor-pointer zmdi-hc-lg"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="!ShowVerifyPass"></i>
+                            <i class="zmdi zmdi-eye cursor-pointer zmdi-hc-lg"  (click)="ShowVerifyPass=!ShowVerifyPass" *ngIf="ShowVerifyPass"></i>
                         </div>
                     </div>
 
