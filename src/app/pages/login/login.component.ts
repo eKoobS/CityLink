@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   ShowPassRegister:boolean=false;
 
   view:string = "login";
+  showPassLogin:boolean=false;
 
   constructor() { }
 

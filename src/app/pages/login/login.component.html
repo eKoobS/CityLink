@@ -14,17 +14,19 @@
         <div class="card p-3 m-t-20"
              style="height: 500px; padding-left: 0 !important;padding-right: 0 !important; margin-top:50px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
 
-            <div class="card-header">
+            <div class="card-header" style="padding-bottom: 0px;">
                 <ul class="nav nav-tabs">
 
                     <li class="nav-item {{ view == 'login' ? 'active':'' }}">
-                        <a class="nav-link {{ view == 'login' ? 'active':'' }}" (click)="view = 'login'">
+                        <a class="nav-link {{ view == 'login' ? 'active':'' }}" (click)="view = 'login'" style="margin-left:30px;">
                             <span>Iniciar sesión</span>
                         </a>
                     </li>
 
-                    <li class="nav-item {{ view == 'registrate' ? 'active':'' }}">
-                        <a class="nav-link {{ view == 'registrate' ? 'active':'' }}" (click)="view = 'registrate'">
+
+                    <li class="nav-item {{ view == 'registrate' ? 'active':'' }}" >
+                        <a class="nav-link {{ view == 'registrate' ? 'active':'' }}"  (click)="view = 'registrate'" style="margin-left:65px;">
+
                             <span>Registrate</span>
                         </a>
                     </li>
@@ -37,21 +39,35 @@
 
                 <div *ngIf="view == 'login'">
 
-                    <div class="form-group form-group--float mb-0">
-                        <input class="form-control p-3" type="text" formControlFloat autofocus>
-                        <label style="">Correo electrónico</label>
-                        <i class="form-group__bar"></i>
+                    <div class="row" >
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input class="form-control p-3" type="text" formControlFloat autofocus>
+                                <label style=""><i class="zmdi zmdi-account" style="margin-right: 10px"></i>Correo electrónico</label>
+                                <i class="form-group__bar" ></i>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group form-group--float">
-                        <input class="form-control p-3" formControlFloat type="password"
-                        >
-                        <label>Contraseña</label>
-                        <i class="form-group__bar"></i>
+                    <div class="row">
+                        <div class="col-11">
+                            <div class="form-group form-group--float mb-0">
+                                <input class="form-control p-3" type="text" formControlFloat autofocus>
+
+                                <label><i class="zmdi zmdi-lock" style="margin-right: 10px"></i>Contraseña</label>
+                               <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                        <div class="col-1" style="margin-top: 45px;">
+                            <i class="zmdi zmdi-eye-off zmdi-hc-lg" *ngIf="!showPassLogin" (click)="showPassLogin=!showPassLogin" ></i>
+                            <i class="zmdi zmdi-eye zmdi-hc-lg" *ngIf="showPassLogin" (click)="showPassLogin=!showPassLogin" placement="right" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."  style="cursor: pointer"></i>
+                        </div>
+                        <div style="margin-top: 20px; margin-left:130px; cursor: pointer">¿Olvidaste tu contraseña?</div>
+
                     </div>
 
                     <div align="right">
-                        <button class="btn btn-success btn-lg" style=" border-radius: 5px 5px 5px 5px;">
+                        <button class="btn btn-success btn-lg" style=" border-radius: 5px 5px 5px 5px; margin-top: 20px; margin-right: 140px; margin-bottom: 20px;">
                             Ingresar
                         </button>
                     </div>
