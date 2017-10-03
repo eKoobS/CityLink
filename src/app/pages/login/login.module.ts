@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SharedModule } from "../../shared/shared.module";
+import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from "./login.component";
 
@@ -15,6 +16,7 @@ const LOGIN_ROUTE = [
     LoginComponent
   ],
   imports: [
+      FormsModule,
     CommonModule,
     SharedModule,
     BsDropdownModule.forRoot(),
