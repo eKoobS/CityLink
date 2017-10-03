@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   ShowVerifyPass:boolean=false;
   ShowPassRegister:boolean=false;
-
   view:string = "login";
   showPassLogin:boolean=false;
+
+  validar(){
+    console.log("Formulario Validado");
+  }
 
   constructor() { }
 

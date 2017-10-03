@@ -1,15 +1,5 @@
-<section class="row" style="background-color: #42A5F5; height: 100vh">
-    <!--<div class="offset-sm-2 col-sm-3">-->
-
-    <!--<h2 style=" color: white !important; display: inline;">Argus App</h2>-->
-
-    <!--<p style="margin-top: 30px; color: white !important; font-size: 14px">-->
-    <!--En esta aplicación usted podrá administrar el control de asistencias sobre los guardias de Argus-->
-    <!--</p>-->
-
-    <!--<p class="mt-5 " style="color: white;font-size: 12px">Desarrollado por &#174; <a-->
-    <!--href="https://tecnologiasintech.com" style="color: white;">Tecnologías Intech</a></p>-->
-    <!--</div>-->
+<section  class="row">
+  <div class="background" style="height: 100vh;width: 100vw">
     <div class="offset-sm-4 col-sm-4" align="center">
         <div class="card p-3 m-t-20"
              style="height: 500px; padding-left: 0 !important;padding-right: 0 !important; margin-top:50px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
@@ -75,12 +65,16 @@
                 </div>
 
                 <div *ngIf="view == 'registrate'">
-
+                    <form action="" (submit)="validar()">
                     <!--formulario de registrate-->
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input class="form-control p-3" type="email" formControlFloat autofocus>
+
+                                <input class="form-control p-3" type="email"
+                                       formControlFloat autofocus ngModel="email"
+                                >
+
                                 <label style=""><i class="zmdi zmdi-email IconSpace"></i> Correo electrónico</label>
                                 <i class="form-group__bar"></i>
                             </div>
@@ -89,7 +83,11 @@
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input class="form-control p-3" type="tel" formControlFloat autofocus>
+
+                                <input class="form-control p-3" type="tel"
+                                       formControlFloat autofocus ngModel="phone"
+                                >
+
                                 <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
                                 <i class="form-group__bar"></i>
                             </div>
@@ -98,7 +96,11 @@
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input type="{{ShowPassRegister? 'text':'password'}}" class="form-control p-3" type="password" formControlFloat autofocus>
+
+                                <input type="{{ShowPassRegister? 'text':'password'}}"
+                                       class="form-control p-3" type="password" ngModel="passRegister"
+                                       formControlFloat autofocus
+                                >
                                 <label><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
                                 <i class="form-group__bar"></i>
                             </div>
@@ -111,7 +113,12 @@
                     <div class="row">
                         <div class="col-11">
                             <div class="form-group form-group--float mb-0">
-                                <input type="{{ShowVerifyPass? 'text':'password'}}" class="form-control p-3" type="password" formControlFloat autofocus>
+
+                                <input type="{{ShowVerifyPass? 'text':'password'}}"
+                                       ngModel="passRegisterVerify" class="form-control p-3"
+                                       type="password" formControlFloat autofocus required
+                                >
+
                                 <label><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
                                 <i class="form-group__bar"></i>
                             </div>
@@ -122,26 +129,29 @@
                         </div>
                     </div>
 
-
-
-
-
-                    <div align="right" style="margin-top: 20px;">
-                        <button class="btn btn-success btn-lg " style=" border-radius: 5px 5px 5px 5px;">Registrate
-                        </button>
+                    <div class="terminos" >
+                        <!--Terminos y Condiciones-->
+                        <div _ngcontent-c10="" class="has-success styleCheckbox">
+                            <label _ngcontent-c10="" class="custom-control custom-checkbox">
+                                <input _ngcontent-c10="" class="custom-control-input" type="checkbox">
+                                <span _ngcontent-c10="" class="custom-control-indicator"></span>
+                                <span _ngcontent-c10="" class="custom-control-description">Acepto Términos y Condiciones</span>
+                            </label>
+                        </div>
+                        <button class="btn btn-success btn-lg btnLogin btn-block" type="submit">Registrate</button>
                     </div>
-
-                </div>
-            </div>
-
-            <div class="card-footer" style="padding-right: 0;padding-left: 0;">
-
-                <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%">
-
-
+                    </form>
                 </div>
 
             </div>
+
+                <div class="card-footer" style="padding-right: 0;padding-left: 0;">
+                    <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%">
+
+
+                    </div>
+                </div>
         </div>
     </div>
+  </div>
 </section>
