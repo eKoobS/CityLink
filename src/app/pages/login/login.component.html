@@ -1,3 +1,5 @@
+<!--<bootstrap-growl [alertCount]="1" [autoClose]="30000"></bootstrap-growl>-->
+
 <section class="row">
     <div class="background" style="height: 100vh;width: 100vw">
         <div class="offset-sm-4 col-sm-4" align="center">
@@ -83,12 +85,11 @@
 
                                         <input class="form-control p-3" type="email"
                                                formControlFloat autofocus
-                                               required [(ngModel)]="userRegister.email" name="email"
+                                               required [(ngModel)]="userRegister.email" name="e" #email (keyup)="errorEmail=false"
                                         >
+                                        <!--<div *ngIf="verifyEmail"></div>-->
 
-                                        <div *ngIf="verifyEmail">Error</div>
-
-                                        <label style=""><i class="zmdi zmdi-email IconSpace"></i> Correo
+                                        <label class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-email IconSpace" ></i> Correo
                                             electrónico</label>
                                         <i class="form-group__bar"></i>
                                     </div>
@@ -96,11 +97,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-11">
-                                    <div class="form-group form-group--float mb-0">
+                                    <div class="form-group form-group--float mb-0" >
 
                                         <input class="form-control p-3" type="tel"
                                                formControlFloat autofocus
-                                               required [(ngModel)]="userRegister.phone" name="phone"
+                                                [(ngModel)]="userRegister.phone" name="phone" required
                                         >
 
                                         <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
@@ -169,13 +170,18 @@
 
                 </div>
 
+
                 <div class="card-footer" style="padding-right: 0;padding-left: 0;">
                     <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%">
 
 
                     </div>
                 </div>
+                <div *ngIf="errorEmail" class="alert alert-danger animated bounceIn" role="alert">
+                    This is a warning alert—check it out!
+                </div>
             </div>
+
         </div>
     </div>
 </section>

@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from "./login.component";
 
+// este se añadio no se porque
+
 const LOGIN_ROUTE = [
   { path: '', component: LoginComponent }
 ];
@@ -16,7 +18,7 @@ const LOGIN_ROUTE = [
     LoginComponent
   ],
   imports: [
-      FormsModule,
+    FormsModule,
     CommonModule,
     SharedModule,
     BsDropdownModule.forRoot(),
