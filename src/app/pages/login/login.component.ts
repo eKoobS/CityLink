@@ -23,13 +23,18 @@ export class LoginComponent implements OnInit {
     showPassLogin: boolean = false;
     userRegister: userRegister[] = [];
     errorEmail:boolean = false;
+    errorPass:boolean =false;
+
+
+
     // radioTerms : boolean=false;
 
     // Observables Firebase
     user: Observable<firebase.User>;
 
     // Referencias al DOM
-    @ViewChild('email') private elementRef: ElementRef;
+    @ViewChild('email') private emailRef: ElementRef;
+    @ViewChild('pass') private passRef: ElementRef;
 
     constructor(db: AngularFireDatabase,
                 public afAuth: AngularFireAuth) {
@@ -59,21 +64,46 @@ export class LoginComponent implements OnInit {
 
         if(user.email == "" || user.email == null){
             this.errorEmail = true;
-            this.elementRef.nativeElement.focus();
-            this.showError=true;
-            this.closeError = false;
-            setTimeout(() => {
-                this.closeError = true;
-                setTimeout(() => {
-                    this.showError=false;
-                }, 1000);
-            }, 2000);
-
-
+            this.emailRef.nativeElement.focus();
+            this.sendError();
 
         }else {
             this.errorEmail = false;
         }
+    }
+
+    loginUser(user: userRegister) {
+
+        if(user.email == "" || user.email == null){
+            this.errorEmail = true;
+            this.emailRef.nativeElement.focus();
+            this.sendError();
+
+        }
+
+        if(user.pass=="" || user.pass == null){
+            this.errorPass = true;
+            this.passRef.nativeElement.focus();
+            this.sendError();
+
+        } else {
+            this.errorPass=false;
+        }
+    }
+
+    verifyLoginFields(user: userRegister){
+
+    }
+
+    sendError(){
+        this.showError=true;
+        this.closeError = false;
+        setTimeout(() => {
+            this.closeError = true;
+            setTimeout(() => {
+                this.showError=false;
+            }, 1000);
+        }, 2000);
     }
 
 }

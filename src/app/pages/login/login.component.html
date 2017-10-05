@@ -38,12 +38,16 @@
 
                     <!--LOGIN-->
                     <div *ngIf="view == 'login'">
-
+                        <!--inicio del form-->
+                        <form action="" (submit)="loginUser(userRegister)">
                         <div class="row">
                             <div class="col-10">
                                 <div class="form-group form-group--float mb-0">
-                                    <input class="form-control p-3" type="text" formControlFloat autofocus>
-                                    <label style=""><i class="zmdi zmdi-account" style="margin-right: 10px"></i>Correo
+                                    <!--error email-->
+                                    <input class="form-control p-3" type="email" formControlFloat autofocus
+                                    required [(ngModel)]="userRegister.email" name="e" #email (keyup)="errorEmail=false">
+                                    <!--errorColor-->
+                                    <label style="" class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-account" style="margin-right: 10px"></i>Correo
                                         electrónico</label>
                                     <i class="form-group__bar"></i>
                                 </div>
@@ -53,9 +57,10 @@
                         <div class="row">
                             <div class="col-10">
                                 <div class="form-group form-group--float mb-0">
-                                    <input class="form-control p-3" type="text" formControlFloat autofocus>
+                                    <input class="form-control p-3" type="{{showPassLogin? 'text':'password'}}" formControlFloat autofocus
+                                    required [(ngModel)]="userRegister.pass" name="e" #pass (keyup)="errorPass=false">
 
-                                    <label><i class="zmdi zmdi-lock" style="margin-right: 10px"></i>Contraseña</label>
+                                    <label class="{{errorPass? 'errorColor':''}}"><i class="zmdi zmdi-lock" style="margin-right: 10px"></i>Contraseña</label>
                                     <i class="form-group__bar"></i>
                                 </div>
                             </div>
@@ -79,7 +84,7 @@
                                 Ingresar
                             </button>
                         </div>
-
+                        </form>
                     </div>
 
                     <!--REGISTRO-->
@@ -185,11 +190,9 @@
                     </div>
                 </div>
 
-                <div *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
-                    Verifica los datos en rojo
-                </div>
-
-
+            </div>
+            <div *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
+                Verifica los datos en rojo
             </div>
         </div>
     </div>
