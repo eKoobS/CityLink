@@ -98,6 +98,7 @@
                                         <input class="form-control p-3" type="email"
                                                formControlFloat autofocus
                                                required [(ngModel)]="userRegister.email" name="e" #email (keyup)="errorEmail=false"
+
                                         >
                                         <!--<div *ngIf="verifyEmail"></div>-->
 
@@ -117,7 +118,7 @@
                                                
                                         >
 
-                                        <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
+                                        <label><i class="zmdi zmdi-phone IconSpace {{ errorPhone? 'errorColor' : ' ' }}"></i>Telefono</label>
                                         <i class="form-group__bar"></i>
                                     </div>
                                 </div>
@@ -149,7 +150,7 @@
                                         <input type="{{ShowVerifyPass? 'text':'password'}}"
                                                class="form-control p-3"
                                                 formControlFloat autofocus required
-                                               [(ngModel)]="userRegister.verifyPass" name="retryPass"
+                                               [(ngModel)]="userRegister.passVerify" name="verifyPass"
                                         >
 
                                         <label><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
@@ -169,10 +170,10 @@
                                 <div class="has-success styleCheckbox">
                                     <label class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox"
-                                               [(ngModel)]="userRegister.terms" name="terms">
+                                               [(ngModel)]="userRegister.terms" name="terms" checked=" {{ errorTerms? '' : 'errorTerms = false' }} " >
                                         <!-- [(ngModel)]="userRegister.radioTerms" -->
                                         <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description">Acepto Términos y Condiciones</span>
+                                        <span class="custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} ">Acepto Términos y Condiciones</span>
                                     </label>
                                 </div>
                                 <button class="btn btn-success btn-lg btnLogin btn-block" type="submit">Registrate
@@ -191,7 +192,8 @@
                 </div>
 
             </div>
-            <div *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
+
+            <div  *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
                 Verifica los datos en rojo
             </div>
         </div>
