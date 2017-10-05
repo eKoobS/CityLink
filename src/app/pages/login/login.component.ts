@@ -23,14 +23,22 @@ export class LoginComponent implements OnInit {
     view: string = "login";
     showPassLogin: boolean = false;
     userRegister: userRegister[] = [];
+
+    errorPass:boolean =false;
     errorEmail: boolean = false;
+    errorTerms: boolean = false;
+    errorPhone: boolean = false;
     // radioTerms : boolean=false;
 
     // Observables Firebase
     user: Observable<firebase.User>;
 
     // Referencias al DOM
-    @ViewChild('email') private elementRef: ElementRef;
+    @ViewChild('email') private emailRef: ElementRef;
+    @ViewChild('pass') private PassRef: ElementRef;
+    @ViewChild('phone') private phoneRef: ElementRef;
+    @ViewChild('verifyPass') private verifyPassRef: ElementRef;
+    @ViewChild('Pass') private passRef: ElementRef;
 
     constructor(db: AngularFireDatabase,
                 private afAuth: AngularFireAuth,
@@ -52,36 +60,92 @@ export class LoginComponent implements OnInit {
     }
 
     authGoogle() {
+
         this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     }
 
     authTwitter() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+
     }
 
     registerUser(user: userRegister) {
+
+        if (!this.verifyRegisterFields(user)) {
+            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass);
+        }
+    }
+
+    verifyRegisterFields(user: userRegister) {
+        // expresiones regulares
+        let patronPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+        let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+        let errors: boolean = false;
+
         if (user.terms == false || user.terms == null) {
-            console.log("Acepte los terminos y condiciones para proceder");
+            errors = true;
+            this.sendError();
         }
 
-        if (user.email == "" || user.email == null) {
+        if (!patronPhone.test(user.phone) || user.phone == " " || user.phone == null) {
+            this.sendError();
+            this.phoneRef.nativeElement.focus();
+            errors = true;
+        }
+        if (user.pass != user.passVerify) {
+            this.verifyPassRef.nativeElement.focus();
+            this.sendError();
+            errors = true;
+        }
+        if(user.passVerify == "" || user.passVerify == null ){
+            this.verifyPassRef.nativeElement.focus();
+            this.sendError();
+            errors = true;
+        }
+        
+        if (user.email == "" || user.email == null || !patronEmail.test(user.email)) {
             this.errorEmail = true;
-            this.elementRef.nativeElement.focus();
-            this.showError = true;
-            this.closeError = false;
-            setTimeout(() => {
-                this.closeError = true;
-                setTimeout(() => {
-                    this.showError = false;
-                }, 1000);
-            }, 2000);
+            this.emailRef.nativeElement.focus();
+            errors = true;
+            this.sendError();
+        }
 
+        return errors;
+    }
+
+    sendError() {
+        this.showError = true;
+        this.closeError = false;
+        setTimeout(() => {
+            this.closeError = true;
+            setTimeout(() => {
+                this.showError = false;
+            }, 1000);
+        }, 2000);
+    }
+
+    loginUser(user: userRegister) {
+
+        if(user.email == "" || user.email == null){
+            this.errorEmail = true;
+            this.emailRef.nativeElement.focus();
+            this.sendError();
+
+        }
+
+        if(user.pass=="" || user.pass == null){
+            this.errorPass = true;
+            this.passRef.nativeElement.focus();
+            this.sendError();
 
         } else {
-            this.errorEmail = false;
+            this.errorPass=false;
         }
-
-        this.alertService.error('Titulo del error', 'Mensaje del error' );
     }
+
+    verifyLoginFields(user: userRegister){
+
+    }
+
 
 }

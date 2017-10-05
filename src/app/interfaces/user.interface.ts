@@ -1,7 +1,7 @@
 
 export interface userRegister{
     email:string;
-    phone:number;
+    phone:string;
     pass:string;
     passVerify:string;
     terms:boolean;
