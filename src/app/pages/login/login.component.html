@@ -33,7 +33,8 @@
                 </div>
 
                 <!--LOGIN Y REGISTRO-->
-                <div class="card-body ml-3 mr-3" style="margin-left: 25px!important;margin-right: 18px!important; height: 400px;"
+                <div class="card-body ml-3 mr-3"
+                     style="margin-left: 25px!important;margin-right: 18px!important; height: 400px;"
                      align="left">
 
                     <!--LOGIN-->
@@ -92,11 +93,13 @@
 
                                         <input class="form-control p-3" type="email"
                                                formControlFloat autofocus
-                                               required [(ngModel)]="userRegister.email" name="e" #email (keyup)="errorEmail=false"
+                                               required [(ngModel)]="userRegister.email" name="e" #email
+                                               (keyup)="errorEmail=false"
                                         >
                                         <!--<div *ngIf="verifyEmail"></div>-->
 
-                                        <label class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-email IconSpace" ></i> Correo
+                                        <label class="{{errorEmail? 'errorColor':''}}"><i
+                                                class="zmdi zmdi-email IconSpace"></i> Correo
                                             electrónico</label>
                                         <i class="form-group__bar"></i>
                                     </div>
@@ -104,12 +107,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-11">
-                                    <div class="form-group form-group--float mb-0" >
+                                    <div class="form-group form-group--float mb-0">
 
                                         <input class="form-control p-3" type="tel"
                                                formControlFloat autofocus
-                                                [(ngModel)]="userRegister.phone" name="phone" required
-                                               
+                                               [(ngModel)]="userRegister.phone" name="phone" required
+
                                         >
 
                                         <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
@@ -143,7 +146,7 @@
 
                                         <input type="{{ShowVerifyPass? 'text':'password'}}"
                                                class="form-control p-3"
-                                                formControlFloat autofocus required
+                                               formControlFloat autofocus required
                                                [(ngModel)]="userRegister.verifyPass" name="retryPass"
                                         >
 
@@ -180,12 +183,38 @@
 
                 <!--AUTH CON REDES SOCIALES-->
                 <div class="card-footer" style="padding-right: 0;padding-left: 0; padding-bottom: 0!important;">
-                    <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%; height: 115px;">¿
+                    <div class="authSocial" style="border-radius: 0 0 10px 10px;width: 100%; height: 115px;">
+
+                        <div class="row" style="width: 90%;">
+
+                            <!--Facebook-->
+                            <div class="col-4">
+                                <div class="circleSocial facebookColor" (click)="authFacebook()">
+                                    <i class="zmdi zmdi-facebook"></i>
+                                </div>
+                            </div>
+
+                            <!--Google-->
+                            <div class="col-4">
+                                <div class="circleSocial googleColor" (click)="authGoogle()">
+                                    <i class="zmdi zmdi-google-plus"></i>
+                                </div>
+                            </div>
+
+                            <!--Twitter-->
+                            <div class="col-4">
+                                <div class="circleSocial twitterColor" (click)="authTwitter()">
+                                    <i class="zmdi zmdi-twitter"></i>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
 
-                <div *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
+                <div *ngIf="showError"
+                     class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}"
+                     role="alert">
                     Verifica los datos en rojo
                 </div>
 

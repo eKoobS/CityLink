@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from "./login.component";
 
-// este se añadio no se porque
+//Services
+import {alertService} from '../../services/alert.service'
 
 const LOGIN_ROUTE = [
   { path: '', component: LoginComponent }
@@ -23,7 +24,10 @@ const LOGIN_ROUTE = [
     SharedModule,
     BsDropdownModule.forRoot(),
     RouterModule.forChild(LOGIN_ROUTE)
-  ]
+  ],
+    providers: [
+        alertService
+    ]
 })
 
 export class LoginModule {  }

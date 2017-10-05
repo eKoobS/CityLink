@@ -22,7 +22,8 @@
         "../node_modules/animate.css/animate.min.css",
         "../node_modules/dropzone/dist/min/dropzone.min.css",
         "../node_modules/nouislider/distribute/nouislider.min.css",
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/sweetalert2/dist/sweetalert2.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
@@ -36,7 +37,8 @@
         "../src/assets/vendors/bower_components/flot.curvedlines/curvedLines.js",
         "../src/assets/vendors/bower_components/flot.orderbars/js/jquery.flot.orderBars.js",
         "../node_modules/jqvmap/dist/jquery.vmap.min.js",
-        "../node_modules/jqvmap/dist/maps/jquery.vmap.world.js"
+        "../node_modules/jqvmap/dist/maps/jquery.vmap.world.js",
+        "../node_modules/sweetalert2/dist/sweetalert2.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
