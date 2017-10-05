@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {userRegister} from "../../interfaces/user.interface";
-
+import { Observable } from 'rxjs/Observable';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -34,14 +37,21 @@ export class LoginComponent implements OnInit {
     }
 
 
+    view: string = "login";
+    user: Observable<firebase.User>;
 
-
-
-    constructor() {
+    constructor(db: AngularFireDatabase,
+                public afAuth: AngularFireAuth) {
+        this.user = afAuth.authState;
+        console.log(this.user);
 
     }
 
     ngOnInit() {
+    }
+
+    authFacebook(){
+        this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     }
 
 }

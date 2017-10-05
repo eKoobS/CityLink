@@ -8,6 +8,13 @@ import { AppComponent } from './app.component';
 import { SharedService } from "./shared/services/shared.service";
 import { LoginComponent } from './pages/login/login.component';
 
+// Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
+
 @NgModule({
     declarations: [
         AppComponent
@@ -16,7 +23,10 @@ import { LoginComponent } from './pages/login/login.component';
         FormsModule,
         BrowserAnimationsModule,
         HttpModule,
-        routing
+        routing,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+        AngularFireAuthModule
 
     ],
     providers: [
