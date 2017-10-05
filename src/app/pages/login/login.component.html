@@ -109,6 +109,7 @@
                                         <input class="form-control p-3" type="tel"
                                                formControlFloat autofocus
                                                 [(ngModel)]="userRegister.phone" name="phone" required
+                                               
                                         >
 
                                         <label><i class="zmdi zmdi-phone IconSpace"></i>Telefono</label>
@@ -184,10 +185,11 @@
                     </div>
                 </div>
 
-                <!--MENSAJE DE ERROR POR FORMULARIOS-->
-                <div *ngIf="errorEmail" class="alert alert-danger animated bounceIn" role="alert">
-                    This is a warning alert—check it out!
+                <div *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
+                    Verifica los datos en rojo
                 </div>
+
+
             </div>
         </div>
     </div>

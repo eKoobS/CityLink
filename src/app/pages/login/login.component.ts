@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     // Declaracion de variables
     ShowVerifyPass: boolean = false;
     ShowPassRegister: boolean = false;
+    showError:boolean=false;
+    closeError:boolean = false;
     view: string = "login";
     showPassLogin: boolean = false;
     userRegister: userRegister[] = [];
@@ -28,7 +30,6 @@ export class LoginComponent implements OnInit {
 
     // Referencias al DOM
     @ViewChild('email') private elementRef: ElementRef;
-
 
     constructor(db: AngularFireDatabase,
                 public afAuth: AngularFireAuth) {
@@ -54,12 +55,21 @@ export class LoginComponent implements OnInit {
     registerUser(user: userRegister) {
         if (user.terms == false || user.terms == null) {
             console.log("Acepte los terminos y condiciones para proceder");
-        }else if(user.email == "" || user.email == null){
+        }
+
+        if(user.email == "" || user.email == null){
             this.errorEmail = true;
             this.elementRef.nativeElement.focus();
+            this.showError=true;
+            this.closeError = false;
             setTimeout(() => {
-                this.errorEmail=false;
+                this.closeError = true;
+                setTimeout(() => {
+                    this.showError=false;
+                }, 1000);
             }, 2000);
+
+
 
         }else {
             this.errorEmail = false;
