@@ -2,28 +2,27 @@
 
 <section class="row">
     <div class="background" style="height: 100vh;width: 100vw">
-        <div class="offset-sm-4 col-sm-4" align="center">
+        <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10" align="center">
 
             <!--CARD DE AUTENTIFICACION-->
             <div class="card p-3 m-t-20"
                  style="height: 600px; padding-left: 0 !important;padding-right: 0 !important; padding-bottom: 0 !important; margin-top:50px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
-
 
                 <!--NAVEGACION-->
                 <div class="card-header" style="padding-bottom: 0px;">
                     <ul class="nav nav-tabs">
 
                         <li class="nav-item {{ view == 'login' ? 'active':'' }}">
-                            <a class="nav-link {{ view == 'login' ? 'active':'' }}" (click)="view = 'login'"
-                               style="margin-left:30px;">
+                            <a class="nav-link {{ view == 'login' ? 'active':'' }}" (click)="view = 'login';userRegister=[]"
+                               style="">
                                 <span>Iniciar sesión</span>
                             </a>
                         </li>
 
 
                         <li class="nav-item {{ view == 'registrate' ? 'active':'' }}">
-                            <a class="nav-link {{ view == 'registrate' ? 'active':'' }}" (click)="view = 'registrate'"
-                               style="margin-left:65px;">
+                            <a class="nav-link {{ view == 'registrate' ? 'active':'' }}" (click)="view = 'registrate';userRegister=[]"
+                               style="">
 
                                 <span>Registrate</span>
                             </a>
@@ -72,15 +71,17 @@
                                    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
                                    style="cursor: pointer"></i>
                             </div>
-                            <div style="margin-top: 20px; margin-left:130px; cursor: pointer">¿Olvidaste tu
-                                contraseña?
+                            <div align="center" style="width: 100%">
+                                <div style="margin-top: 20px;  cursor: pointer">¿Olvidaste tu
+                                    contraseña?
+                                </div>
                             </div>
 
                         </div>
 
-                        <div align="right">
+                        <div align="center">
                             <button class="btn btn-success btn-lg"
-                                    style=" border-radius: 5px 5px 5px 5px; margin-top: 20px; margin-right: 140px; margin-bottom: 20px;">
+                                    style=" border-radius: 5px 5px 5px 5px; margin-top: 20px;  margin-bottom: 20px;">
                                 Ingresar
                             </button>
                         </div>
@@ -89,7 +90,7 @@
 
                     <!--REGISTRO-->
                     <div *ngIf="view == 'registrate'">
-                        <form action="" (submit)="registerUser(userRegister)">
+                        <form action="">
                             <!--formulario de registrate-->
                             <div class="row">
                                 <div class="col-11">
@@ -113,7 +114,7 @@
                                     <div class="form-group form-group--float mb-0" >
 
                                         <input class="form-control p-3" type="tel"
-                                               formControlFloat autofocus
+                                               formControlFloat autofocus #phone
                                                 [(ngModel)]="userRegister.phone" name="phone" required
                                                
                                         >
@@ -124,12 +125,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-10">
                                     <div class="form-group form-group--float mb-0">
 
                                         <input type="{{ShowPassRegister? 'text':'password'}}"
                                                class="form-control p-3"
-                                               formControlFloat autofocus required
+                                               formControlFloat autofocus required #pass
                                                [(ngModel)]="userRegister.pass" name="pass"
                                         >
                                         <label><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
@@ -144,12 +145,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-10">
                                     <div class="form-group form-group--float mb-0">
 
                                         <input type="{{ShowVerifyPass? 'text':'password'}}"
                                                class="form-control p-3"
-                                                formControlFloat autofocus required
+                                                formControlFloat autofocus required #verifyPass
                                                [(ngModel)]="userRegister.passVerify" name="verifyPass"
                                         >
 
@@ -167,7 +168,7 @@
 
                             <div class="terminos">
                                 <!--Terminos y Condiciones-->
-                                <div class="has-success styleCheckbox">
+                                <div align="center" class="has-success  styleCheckbox">
                                     <label class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox"
                                                [(ngModel)]="userRegister.terms" name="terms" checked=" {{ errorTerms? '' : 'errorTerms = false' }} " >
@@ -176,7 +177,7 @@
                                         <span class="custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} ">Acepto Términos y Condiciones</span>
                                     </label>
                                 </div>
-                                <button class="btn btn-success btn-lg btnLogin btn-block" type="submit">Registrate
+                                <button class="btn btn-success btn-lg btnLogin btn-block" (click)="registerUser(userRegister)">Registrate
                                 </button>
                             </div>
                         </form>

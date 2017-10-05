@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     @ViewChild('pass') private passRef: ElementRef;
 
     @ViewChild('phone') private phoneRef: ElementRef;
-    @ViewChild('terms') private termsRef: ElementRef;
     @ViewChild('verifyPass') private verifyPassRef: ElementRef;
     @ViewChild('Pass') private passRef: ElementRef;
 
@@ -64,26 +63,22 @@ export class LoginComponent implements OnInit {
     registerUser(user: userRegister) {
 
         if (!this.verifyRegisterFields(user)) {
-
+            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass);
         }
-
-
     }
 
     verifyRegisterFields(user: userRegister) {
         // expresiones regulares
-        let patron = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+        let patronPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
         if (user.terms == false || user.terms == null) {
-            this.sendError();
-            this.errorTerms = true;
             errors = true;
-            this.termsRef.nativeElement.focus();
+            this.sendError();
         }
 
-        if (!patron.test(user.phone) || user.phone == " " || user.phone == null) {
+        if (!patronPhone.test(user.phone) || user.phone == " " || user.phone == null) {
             this.sendError();
             this.phoneRef.nativeElement.focus();
             errors = true;
@@ -104,8 +99,6 @@ export class LoginComponent implements OnInit {
             this.emailRef.nativeElement.focus();
             errors = true;
             this.sendError();
-        } else {
-            this.errorEmail = false;
         }
 
         return errors;
