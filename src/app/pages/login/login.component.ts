@@ -11,34 +11,24 @@ import * as firebase from 'firebase/app';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
+
+    // Declaracion de variables
     ShowVerifyPass: boolean = false;
     ShowPassRegister: boolean = false;
     view: string = "login";
     showPassLogin: boolean = false;
     userRegister: userRegister[] = [];
     errorEmail:boolean = false;
+    // radioTerms : boolean=false;
+
+    // Observables Firebase
+    user: Observable<firebase.User>;
+
+    // Referencias al DOM
     @ViewChild('email') private elementRef: ElementRef;
 
-    // radioTerms : boolean=false;
-    registerUser(user: userRegister) {
-        if (user.terms == false || user.terms == null) {
-            console.log("Acepte los terminos y condiciones para proceder");
-        }else if(user.email == "" || user.email == null){
-            this.errorEmail = true;
-            this.elementRef.nativeElement.focus();
-           setTimeout(() => {
-                this.errorEmail=false;
-            }, 2000);
-
-        }else {
-            this.errorEmail = false;
-        }
-    }
-
-
-    view: string = "login";
-    user: Observable<firebase.User>;
 
     constructor(db: AngularFireDatabase,
                 public afAuth: AngularFireAuth) {
@@ -50,8 +40,30 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
+
+    // Metodos
+
     authFacebook(){
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    }
+
+    authGoogle(){
+        
+    }
+
+    registerUser(user: userRegister) {
+        if (user.terms == false || user.terms == null) {
+            console.log("Acepte los terminos y condiciones para proceder");
+        }else if(user.email == "" || user.email == null){
+            this.errorEmail = true;
+            this.elementRef.nativeElement.focus();
+            setTimeout(() => {
+                this.errorEmail=false;
+            }, 2000);
+
+        }else {
+            this.errorEmail = false;
+        }
     }
 
 }
