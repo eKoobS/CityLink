@@ -13,6 +13,21 @@
   }
 }
 
+.page-loader2{
+  @include size(100%, 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(243, 243, 243, 0);
+  z-index: 999999999;
+  align-items: center;
+  justify-content: center;
+
+  &:not(.page-loader--inner) {
+    display: flex;
+  }
+}
+
 .page-loader--inner {
   display: none;
 }

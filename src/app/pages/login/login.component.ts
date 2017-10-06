@@ -24,11 +24,13 @@ export class LoginComponent implements OnInit {
     showPassLogin: boolean = false;
     userRegister: userRegister[] = [];
 
-    errorPass:boolean =false;
-    errorVerifyPass:boolean =false;
+    errorPass: boolean = false;
+    errorVerifyPass: boolean = false;
     errorEmail: boolean = false;
     errorTerms: boolean = false;
     errorPhone: boolean = false;
+    isLoading: boolean = false;
+    response: any;
     // radioTerms : boolean=false;
 
     // Observables Firebase
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
 
     registerUser(user: userRegister) {
         if (!this.verifyRegisterFields(user)) {
-            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass);
+            this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pass);
         }
     }
 
@@ -95,30 +97,30 @@ export class LoginComponent implements OnInit {
             this.sendError();
             this.phoneRef.nativeElement.focus();
             errors = true;
-            this.errorPhone=true;
+            this.errorPhone = true;
         }
 
         // verificacion de contraseñas iguales
         if (user.pass != user.passVerify) {
             this.verifyPassRef.nativeElement.focus();
             this.sendError();
-            this.errorVerifyPass=true;
+            this.errorVerifyPass = true;
             errors = true;
         }
 
         // verificacion de contraseña vacia
-        if(user.pass =="" || user.pass == null){
+        if (user.pass == "" || user.pass == null) {
             this.passRef.nativeElement.focus();
 
-            this.errorPass=true;
+            this.errorPass = true;
             this.sendError();
-            errors=true;
+            errors = true;
         }
 
         // verificacion de repetir contraseña vacia
-        if(user.passVerify == "" || user.passVerify == null ){
+        if (user.passVerify == "" || user.passVerify == null) {
             this.verifyPassRef.nativeElement.focus();
-            this.errorVerifyPass=true;
+            this.errorVerifyPass = true;
             this.sendError();
             errors = true;
         }
@@ -146,27 +148,77 @@ export class LoginComponent implements OnInit {
     loginUser(user: userRegister) {
         if (!this.verifyLoginFields(user)) {
 
+            this.isLoading = true;
+
+            this.afAuth.auth.signInWithEmailAndPassword(user.email, user.pass)
+                .then((response: any) => {
+                    console.log(response);
+                    // Redigir a otra vista de principal
+                    this.isLoading = false;
+                })
+                .catch((error: any) => {
+                    this.getErrorAuth(error.code);
+                    this.isLoading = false;
+                })
         }
     }
 
-    verifyLoginFields(user: userRegister){
+    verifyLoginFields(user: userRegister) {
         let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
-        if(!regularExpressionEmail.test(user.email) || user.email == "" || user.email == null){
+        if (!regularExpressionEmail.test(user.email) || user.email == "" || user.email == null) {
             this.errorEmail = true;
             this.emailRef.nativeElement.focus();
-            errors=true;
+            errors = true;
             this.sendError();
 
         }
 
-        if( user.pass=="" || user.pass == null) {
+        if (user.pass == "" || user.pass == null) {
             this.errorPass = true;
             this.passRef.nativeElement.focus();
             errors = true;
             this.sendError();
         }
         return errors;
+    }
+
+    getErrorAuth(codeError: string) {
+
+        switch (codeError) {
+            case 'auth/user-not-found':
+                this.alertService.confirm("Usuario no encontrado!", "Escriba un usuario valido")
+                    .then((response) => {
+                        this.emailRef.nativeElement.focus();
+                        this.errorEmail = true;
+                        console.log(response);
+                    });
+
+                break;
+
+            case 'auth/user-disabled':
+                this.alertService.confirm("Email deshabilitado!", "Escriba un email valido")
+                    .then((response) => {
+                        this.emailRef.nativeElement.focus();
+                        this.errorEmail = true;
+                        console.log(response);
+                    });
+
+                break;
+
+            case 'auth/wrong-password':
+                this.alertService.confirm("Contraseña incorrecta!", "Escriba una contraseña correcta")
+                    .then((response) => {
+                        this.passRef.nativeElement.focus();
+                        this.errorPass = true;
+                        console.log(response);
+                    });
+
+                break;
+
+            default:
+                break;
+        }
     }
 }
