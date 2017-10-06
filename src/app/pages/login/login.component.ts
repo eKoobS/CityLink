@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
     }
 
     registerUser(user: userRegister) {
-
         if (!this.verifyRegisterFields(user)) {
             this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass);
         }
@@ -83,18 +82,31 @@ export class LoginComponent implements OnInit {
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
+        // verificacion de email
         if (user.email == "" || user.email == null || !patronEmail.test(user.email)) {
             this.errorEmail = true;
             this.emailRef.nativeElement.focus();
             errors = true;
             this.sendError();
         }
+
+        // verificacion de telefono
         if (!patronPhone.test(user.phone) || user.phone == " " || user.phone == null) {
             this.sendError();
             this.phoneRef.nativeElement.focus();
             errors = true;
             this.errorPhone=true;
         }
+
+        // verificacion de contraseñas iguales
+        if (user.pass != user.passVerify) {
+            this.verifyPassRef.nativeElement.focus();
+            this.sendError();
+            this.errorVerifyPass=true;
+            errors = true;
+        }
+
+        // verificacion de contraseña vacia
         if(user.pass =="" || user.pass == null){
             this.passRef.nativeElement.focus();
 
@@ -102,18 +114,16 @@ export class LoginComponent implements OnInit {
             this.sendError();
             errors=true;
         }
+
+        // verificacion de repetir contraseña vacia
         if(user.passVerify == "" || user.passVerify == null ){
             this.verifyPassRef.nativeElement.focus();
             this.errorVerifyPass=true;
             this.sendError();
             errors = true;
         }
-        if (user.pass != user.passVerify) {
-            this.verifyPassRef.nativeElement.focus();
-            this.sendError();
-            this.errorVerifyPass=true;
-            errors = true;
-        }
+
+        // verificacion de terminos y condiciones vacio
         if (user.terms == false || user.terms == null) {
             errors = true;
             this.sendError();
@@ -134,7 +144,6 @@ export class LoginComponent implements OnInit {
     }
 
     loginUser(user: userRegister) {
-
         if (!this.verifyLoginFields(user)) {
 
         }
@@ -158,12 +167,6 @@ export class LoginComponent implements OnInit {
             errors = true;
             this.sendError();
         }
-        // } else {
-        //     this.errorPass=false;
-        // }
         return errors;
     }
-
-
-
 }

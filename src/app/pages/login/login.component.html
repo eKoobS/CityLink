@@ -180,11 +180,12 @@
                                         <span class="custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} ">Acepto Términos y Condiciones</span>
                                     </label>
                                 </div>
-                                <button class="btn btn-success btn-lg btnLogin btn-block" (click)="registerUser(userRegister)">Registrate
+                                <button class="btn btn-success btn-lg btnLogin btn-block" data-toggle="tooltip" data-placement="right" title="Verifica todos los campos" (click)="registerUser(userRegister)">Registrate
                                 </button>
                             </div>
                         </form>
                     </div>
+
 
                 </div>
 
@@ -222,6 +223,7 @@
             <div  *ngIf="showError" class="alert alert-danger animated {{ showError ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
                 Verifica los datos en rojo
             </div>
+
         </div>
     </div>
 </section>
