@@ -124,25 +124,33 @@ export class LoginComponent implements OnInit {
 
     loginUser(user: userRegister) {
 
-        if(user.email == "" || user.email == null){
-            this.errorEmail = true;
-            this.emailRef.nativeElement.focus();
-            this.sendError();
+        if (!this.verifyLoginFields(user)) {
 
-        }
-
-        if(user.pass=="" || user.pass == null){
-            this.errorPass = true;
-            this.passRef.nativeElement.focus();
-            this.sendError();
-
-        } else {
-            this.errorPass=false;
         }
     }
 
     verifyLoginFields(user: userRegister){
+        let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+        let errors: boolean = false;
 
+        if(!regularExpressionEmail.test(user.email) || user.email == "" || user.email == null){
+            this.errorEmail = true;
+            this.emailRef.nativeElement.focus();
+            errors=true;
+            this.sendError();
+
+        }
+
+        if( user.pass=="" || user.pass == null) {
+            this.errorPass = true;
+            this.passRef.nativeElement.focus();
+            errors = true;
+            this.sendError();
+        }
+        // } else {
+        //     this.errorPass=false;
+        // }
+        return errors;
     }
 
 
