@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     userRegister: userRegister[] = [];
 
     errorPass:boolean =false;
+    errorVerifyPass:boolean =false;
     errorEmail: boolean = false;
     errorTerms: boolean = false;
     errorPhone: boolean = false;
@@ -35,10 +36,10 @@ export class LoginComponent implements OnInit {
 
     // Referencias al DOM
     @ViewChild('email') private emailRef: ElementRef;
-    @ViewChild('pass') private PassRef: ElementRef;
+    @ViewChild('pass') private passRef: ElementRef;
     @ViewChild('phone') private phoneRef: ElementRef;
     @ViewChild('verifyPass') private verifyPassRef: ElementRef;
-    @ViewChild('Pass') private passRef: ElementRef;
+
 
     constructor(db: AngularFireDatabase,
                 private afAuth: AngularFireAuth,
@@ -82,30 +83,38 @@ export class LoginComponent implements OnInit {
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
-        if (user.terms == false || user.terms == null) {
+        if (user.email == "" || user.email == null || !patronEmail.test(user.email)) {
+            this.errorEmail = true;
+            this.emailRef.nativeElement.focus();
             errors = true;
             this.sendError();
         }
-
         if (!patronPhone.test(user.phone) || user.phone == " " || user.phone == null) {
             this.sendError();
             this.phoneRef.nativeElement.focus();
+            errors = true;
+            this.errorPhone=true;
+        }
+        if(user.pass =="" || user.pass == null){
+            this.passRef.nativeElement.focus();
+
+            this.errorPass=true;
+            this.sendError();
+            errors=true;
+        }
+        if(user.passVerify == "" || user.passVerify == null ){
+            this.verifyPassRef.nativeElement.focus();
+            this.errorVerifyPass=true;
+            this.sendError();
             errors = true;
         }
         if (user.pass != user.passVerify) {
             this.verifyPassRef.nativeElement.focus();
             this.sendError();
+            this.errorVerifyPass=true;
             errors = true;
         }
-        if(user.passVerify == "" || user.passVerify == null ){
-            this.verifyPassRef.nativeElement.focus();
-            this.sendError();
-            errors = true;
-        }
-        
-        if (user.email == "" || user.email == null || !patronEmail.test(user.email)) {
-            this.errorEmail = true;
-            this.emailRef.nativeElement.focus();
+        if (user.terms == false || user.terms == null) {
             errors = true;
             this.sendError();
         }
@@ -126,26 +135,35 @@ export class LoginComponent implements OnInit {
 
     loginUser(user: userRegister) {
 
-        if(user.email == "" || user.email == null){
-            this.errorEmail = true;
-            this.emailRef.nativeElement.focus();
-            this.sendError();
+        if (!this.verifyLoginFields(user)) {
 
-        }
-
-        if(user.pass=="" || user.pass == null){
-            this.errorPass = true;
-            this.passRef.nativeElement.focus();
-            this.sendError();
-
-        } else {
-            this.errorPass=false;
         }
     }
 
     verifyLoginFields(user: userRegister){
+        let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+        let errors: boolean = false;
 
+        if(!regularExpressionEmail.test(user.email) || user.email == "" || user.email == null){
+            this.errorEmail = true;
+            this.emailRef.nativeElement.focus();
+            errors=true;
+            this.sendError();
+
+        }
+
+        if( user.pass=="" || user.pass == null) {
+            this.errorPass = true;
+            this.passRef.nativeElement.focus();
+            errors = true;
+            this.sendError();
+        }
+        // } else {
+        //     this.errorPass=false;
+        // }
+        return errors;
     }
+
 
 
 }
