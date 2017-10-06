@@ -72,7 +72,13 @@ export class LoginComponent implements OnInit {
 
     registerUser(user: userRegister) {
         if (!this.verifyRegisterFields(user)) {
-            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass);
+            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass).then((response:any)=>{
+                this.afAuth.auth.currentUser.sendEmailVerification();
+                // this.afAuth.auth.
+
+            }).catch((error:any)=> {
+
+            })
         }
     }
 
@@ -155,6 +161,7 @@ export class LoginComponent implements OnInit {
 
         if(!regularExpressionEmail.test(user.email) || user.email == "" || user.email == null){
             this.errorEmail = true;
+
             this.emailRef.nativeElement.focus();
             errors=true;
             this.sendError();
@@ -169,4 +176,9 @@ export class LoginComponent implements OnInit {
         }
         return errors;
     }
+
+    showInfoTerms(){
+        this.alertService.infoTerms('Terminos y Condiciones');
+    }
+
 }

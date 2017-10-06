@@ -5,11 +5,11 @@
         <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10" align="center">
 
             <!--CARD DE AUTENTIFICACION-->
-            <div class="card p-3 m-t-20"
-                 style="height: 600px; padding-left: 0 !important;padding-right: 0 !important; padding-bottom: 0 !important; margin-top:50px; box-shadow:0px 0px 15px #707070; border-radius: 10px 10px 10px 10px;-moz-border-radius: 10px 10px 10px 10px;-webkit-border-radius: 10px 10px 10px 10px;">
+            <div class="card p-3 m-t-20 cardLogin-Register {{ view=='registrate'? 'cardRegister':'' }}"
+                 style="">
 
                 <!--NAVEGACION-->
-                <div class="card-header" style="padding-bottom: 0px;">
+                <div class="card-header p-b-0" >
                     <ul class="nav nav-tabs">
 
                         <li class="nav-item {{ view == 'login' ? 'active':'' }}">
@@ -32,8 +32,8 @@
                 </div>
 
                 <!--LOGIN Y REGISTRO-->
-                <div class="card-body ml-3 mr-3"
-                     style="margin-left: 25px!important;margin-right: 18px!important; height: 400px;"
+                <div class="card-body ml-3 mr-3 cardLogin {{ view=='registrate'? 'card-Register':'' }}"
+                     style=""
                      align="left">
 
                     <!--LOGIN-->
@@ -47,7 +47,7 @@
                                     <input class="form-control p-3" type="email" formControlFloat autofocus
                                     required [(ngModel)]="userRegister.email" name="e" #email (keyup)="errorEmail=false">
                                     <!--errorColor-->
-                                    <label style="" class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-account" style="margin-right: 10px"></i>Correo
+                                    <label style="" class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-account m-r-10" ></i>Correo
                                         electrónico</label>
                                     <i class="form-group__bar"></i>
                                 </div>
@@ -60,20 +60,18 @@
                                     <input class="form-control p-3" type="{{showPassLogin? 'text':'password'}}" formControlFloat autofocus
                                     required [(ngModel)]="userRegister.pass" name="e" #pass (keyup)="errorPass=false">
 
-                                    <label class="{{errorPass? 'errorColor':''}}"><i class="zmdi zmdi-lock" style="margin-right: 10px"></i>Contraseña</label>
+                                    <label class="{{errorPass? 'errorColor':''}}"><i class="zmdi zmdi-lock m-r-10"></i>Contraseña</label>
                                     <i class="form-group__bar"></i>
                                 </div>
                             </div>
-                            <div class="col-1" style="margin-top: 45px;">
+                            <div class="col-1 m-t-45" >
                                 <i class="zmdi zmdi-eye-off zmdi-hc-lg" *ngIf="!showPassLogin"
                                    (click)="showPassLogin=!showPassLogin"></i>
-                                <i class="zmdi zmdi-eye zmdi-hc-lg" *ngIf="showPassLogin"
-                                   (click)="showPassLogin=!showPassLogin" placement="right"
-                                   tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                                   style="cursor: pointer"></i>
+                                <i class="zmdi zmdi-eye zmdi-hc-lg cursor-pointer" *ngIf="showPassLogin"
+                                   (click)="showPassLogin=!showPassLogin"></i>
                             </div>
                             <div align="center" style="width: 100%">
-                                <div style="margin-top: 20px;  cursor: pointer">¿Olvidaste tu
+                                <div class="m-t-20 cursor-pointer">¿Olvidaste tu
                                     contraseña?
                                 </div>
                             </div>
@@ -81,8 +79,8 @@
                         </div>
 
                         <div align="center">
-                            <button class="btn btn-success btn-lg"
-                                    style=" border-radius: 5px 5px 5px 5px; margin-top: 20px;  margin-bottom: 20px;">
+                            <button class="btn btn-success btn-lg m-t-20 m-b-20"
+                                    style=" border-radius: 5px 5px 5px 5px">
                                 Ingresar
                             </button>
                         </div>
@@ -177,10 +175,10 @@
                                                [(ngModel)]="userRegister.terms" name="terms" checked=" {{ errorTerms? '' : 'errorTerms = false' }} " >
                                         <!-- [(ngModel)]="userRegister.radioTerms" -->
                                         <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} ">Acepto Términos y Condiciones</span>
                                     </label>
+                                    <span style="color: #32c787" class=" cursor-pointer custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} " (click)="showInfoTerms()">Acepto Términos y Condiciones</span>
                                 </div>
-                                <button class="btn btn-success btn-lg btnLogin btn-block" data-toggle="tooltip" data-placement="right" title="Verifica todos los campos" (click)="registerUser(userRegister)">Registrate
+                                <button  class="cursor-pointer btn btn-success btn-lg btnLogin btn-block" data-toggle="tooltip" data-placement="right" title="Verifica todos los campos" (click)="registerUser(userRegister)">Registrate
                                 </button>
                             </div>
                         </form>

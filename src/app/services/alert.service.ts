@@ -14,4 +14,66 @@ export class alertService {
             'error'
         )
     }
+    infoTerms(title:string){
+        swal({
+            title: title,
+            type: 'info',
+            html:
+            ' <div style="height: 500px; overflow-y: auto">' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '<p>.kjbñjboho</p>' +
+            '</div> '
+            ,
+            showCloseButton: true,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Acepto!'
+        })
+
+    }
 }
