@@ -116,10 +116,10 @@
                                         <input class="form-control p-3" type="tel"
                                                formControlFloat autofocus #phone
                                                 [(ngModel)]="userRegister.phone" name="phone" required
-                                               
+                                               (keyup)="errorPhone=false"
                                         >
 
-                                        <label><i class="zmdi zmdi-phone IconSpace {{ errorPhone? 'errorColor' : ' ' }}"></i>Telefono</label>
+                                        <label class="{{ errorPhone? 'errorColor' : ' ' }}" ><i class="zmdi zmdi-phone IconSpace "></i>Telefono</label>
                                         <i class="form-group__bar"></i>
                                     </div>
                                 </div>
@@ -132,8 +132,9 @@
                                                class="form-control p-3"
                                                formControlFloat autofocus required #pass
                                                [(ngModel)]="userRegister.pass" name="pass"
+                                               (keyup)="errorPass=false"
                                         >
-                                        <label><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
+                                        <label class="{{ errorPass? 'errorColor' : ' ' }}"><i class="zmdi zmdi-lock IconSpace"></i>Contraseña</label>
                                         <i class="form-group__bar"></i>
                                     </div>
                                 </div>
@@ -152,9 +153,10 @@
                                                class="form-control p-3"
                                                 formControlFloat autofocus required #verifyPass
                                                [(ngModel)]="userRegister.passVerify" name="verifyPass"
+                                               (keyup)="errorVerifyPass=false"
                                         >
 
-                                        <label><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
+                                        <label class="{{ errorVerifyPass? 'errorColor': '' }}"><i class="zmdi zmdi-lock IconSpace"></i>Repetir Contraseña</label>
                                         <i class="form-group__bar"></i>
                                     </div>
                                 </div>
