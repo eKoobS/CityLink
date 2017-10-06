@@ -16,6 +16,9 @@
     ],
     "paths": {
       "angular2-autosize": ["../node_modules/angular2-autosize/src/autosize.directive"]
+    },
+    "compilerOptions": {
+      "sourceMap": true
     }
   }
 }

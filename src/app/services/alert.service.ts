@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import swal from 'sweetalert2'
+import {promise} from "selenium-webdriver";
+import {reject} from "q";
 
 @Injectable()
 export class alertService {
@@ -14,7 +16,7 @@ export class alertService {
             'error'
         )
     }
-    infoTerms(title:string){
+    infoTerms(title:string) {
         swal({
             title: title,
             type: 'info',
@@ -74,6 +76,22 @@ export class alertService {
             confirmButtonText:
                 '<i class="fa fa-thumbs-up"></i> Acepto!'
         })
+    }
+    confirm(title:string, message:string) {
+
+        return new Promise((resolve => {
+
+            swal({
+                title: title,
+                text: message,
+                type: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+            }).then(function () {
+                resolve();
+            })
+
+        }))
 
     }
 }
