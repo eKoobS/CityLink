@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     }
 
     registerUser(user: userRegister) {
-        if (!this.verifyRegisterFields(user)) {
+        if (!this.errorInRegisterFields(user)) {
             this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass).then((response:any)=>{
                 this.afAuth.auth.currentUser.sendEmailVerification();
                 // this.afAuth.auth.
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    verifyRegisterFields(user: userRegister) {
+    errorInRegisterFields(user: userRegister) {
         // expresiones regulares
         let patronPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
@@ -153,7 +153,7 @@ export class LoginComponent implements OnInit {
     }
 
     loginUser(user: userRegister) {
-        if (!this.verifyLoginFields(user)) {
+        if (!this.errorInLoginFields(user)) {
 
             this.isLoading = true;
 
@@ -170,7 +170,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    verifyLoginFields(user: userRegister) {
+    errorInLoginFields(user: userRegister) {
         let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
