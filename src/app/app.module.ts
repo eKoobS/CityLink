@@ -7,6 +7,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { SharedService } from "./shared/services/shared.service";
 import { LoginComponent } from './pages/login/login.component';
+import { ContraseniaOlvidadaComponent } from './pages/contrasenia-olvidada/contrasenia-olvidada.component';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';

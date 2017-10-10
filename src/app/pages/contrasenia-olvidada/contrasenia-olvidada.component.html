@@ -1,0 +1,50 @@
+<!--<bootstrap-growl [alertCount]="1" [autoClose]="30000"></bootstrap-growl>-->
+
+<section class="row">
+    <div class="background" style="height: 100vh;width: 100vw">
+        <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10"
+             align="center">
+
+            <!--CARD DE CONTRASEÑA OLVIDADA-->
+            <div class="card p-3 m-t-20 p-l-30 p-r-30">
+
+                <div class="card-header">
+                    <h2>Recupera tu contraseña</h2>
+                    <p class="m-t-25">Primero escribe tu correo electronico para enviarte un enlace y puedas restablecer
+                        tu contraseña</p>
+                </div>
+
+                <div class="card-body m-l-25 m-r-15">
+
+                    <form>
+
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="form-group form-group--float mb-0 pl-2 m-t-0" style="text-align: left">
+
+                                    <input type="email" class="form-control" formControlFloat
+                                           [(ngModel)]="userEmail" name="e" #email (keyup)="errorEmail=false">
+
+                                    <label class="{{errorEmail? 'errorColor':''}}"><i class="zmdi zmdi-email m-r-10"></i>Correo electrónico</label>
+                                    <i class="form-group__bar"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="card-footer m-t-15">
+                    <button class="btn btn-success mt-4 btn-block" style="font-size: 16px;" (click)="sendEmailVerification(userEmail)">Enviar enlace</button>
+                </div>
+
+            </div>
+            <div  *ngIf="error" class="alert alert-danger animated {{ error ? 'bounceIn':'' }}  {{ closeError ? 'bounceOut' : '' }}" role="alert">
+                Verifica los datos en rojo
+            </div>
+
+        </div>
+    </div>
+</section>
