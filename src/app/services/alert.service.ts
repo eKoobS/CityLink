@@ -17,65 +17,26 @@ export class alertService {
         )
     }
     infoTerms(title:string) {
-        swal({
-            title: title,
-            type: 'info',
-            html:
-            ' <div style="height: 500px; overflow-y: auto">' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '<p>.kjbñjboho</p>' +
-            '</div> '
-            ,
-            showCloseButton: true,
-            confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Acepto!'
-        })
+       return new Promise((resolve =>{
+           swal({
+               title: title,
+               type: 'info',
+               html:
+               ' <div style="height: 500px; overflow-y: auto">' +
+               '<p>.kjbñjboho</p>' +
+               '<p>.kjbñjboho</p>' +
+               '<p>.kjbñjboho</p>' +
+               '<p>.kjbñjboho</p>' +
+               '<p>.kjbñjboho</p>' +
+               '</div> '
+               ,
+               showCloseButton: true,
+               confirmButtonText:
+                   '<i class="fa fa-thumbs-up"></i> Acepto'
+           }).then(function () {
+               resolve();
+           })
+       }))
     }
     confirm(title:string, message:string) {
 
@@ -93,5 +54,18 @@ export class alertService {
 
         }))
 
+    }
+
+    success(title:string,message:string){
+        return new Promise((resolve)=>{
+            swal({
+                title:title,
+                text:message,
+                type:'success',
+                confirmButtonText: 'OK'
+            }).then(function () {
+                resolve();
+            })
+        })
     }
 }

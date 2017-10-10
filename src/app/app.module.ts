@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { SharedService } from "./shared/services/shared.service";
 import { LoginComponent } from './pages/login/login.component';
 
+
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { VerificarEmailComponent } from './pages/verificar-email/verificar-email.component';
 
 @NgModule({
     declarations: [
