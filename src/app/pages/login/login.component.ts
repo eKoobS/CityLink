@@ -5,6 +5,7 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {alertService} from '../../services/alert.service'
+import {error} from "util";
 
 
 @Component({
@@ -30,10 +31,14 @@ export class LoginComponent implements OnInit {
     errorTerms: boolean = false;
     errorPhone: boolean = false;
     isLoading: boolean = false;
-    response: any;
+
+    userInfo: FirebaseListObservable<any>;
+
+    // response: any;
     // radioTerms : boolean=false;
 
     // Observables Firebase
+    userInfoBasic:any;
     user: Observable<firebase.User>;
 
     // Referencias al DOM
@@ -47,7 +52,12 @@ export class LoginComponent implements OnInit {
                 private afAuth: AngularFireAuth,
                 private alertService: alertService) {
 
-        this.user = afAuth.authState;
+        afAuth.auth.onAuthStateChanged((user)=> {
+            console.log(user)
+            this.userInfoBasic=user;
+        });
+
+        this.userInfo = db.list('/usuarios');
         console.log(this.user);
 
     }
@@ -73,19 +83,34 @@ export class LoginComponent implements OnInit {
     }
 
     registerUser(user: userRegister) {
-        if (!this.verifyRegisterFields(user)) {
-            this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.pass).then((response:any)=>{
-                this.afAuth.auth.currentUser.sendEmailVerification();
-                // this.afAuth.auth.
 
-            }).catch((error:any)=> {
+        if (!this.errorInRegisterFields(user)) {
+            this.isLoading=true;
+            this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pass).then((response: any) => {
+                this.afAuth.auth.currentUser.sendEmailVerification().then(response=>{
+                    console.log("Resuelto "+response)
+                    // response.emailVerified=true;
+                }).catch(error=>{
+                    console.log(error)
+                })
+                this.isLoading=false;
+                this.alertService.success("Usuario Registrado Correctamente","Te hemos enviado un link a tu correo" +
+                    " da click en el para entrar a la app");
+                this.userInfo.set(response.uid, {
+                    'email': user.email,
+                    'telefono': user.phone
+                });
+
+            }).catch((error: any) => {
+                this.isLoading=false;
+                this.getErrorAuth(error.code);
 
             })
 
         }
     }
 
-    verifyRegisterFields(user: userRegister) {
+    errorInRegisterFields(user: userRegister) {
         // expresiones regulares
         let patronPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
@@ -153,7 +178,7 @@ export class LoginComponent implements OnInit {
     }
 
     loginUser(user: userRegister) {
-        if (!this.verifyLoginFields(user)) {
+        if (!this.errorInLoginFields(user)) {
 
             this.isLoading = true;
 
@@ -170,7 +195,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    verifyLoginFields(user: userRegister) {
+    errorInLoginFields(user: userRegister) {
         let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
@@ -192,8 +217,10 @@ export class LoginComponent implements OnInit {
         return errors;
     }
 
-    showInfoTerms(){
-        this.alertService.infoTerms('Terminos y Condiciones');
+    showInfoTerms(user: userRegister) {
+        this.alertService.infoTerms('Terminos y Condiciones').then(response => {
+            user.terms = true;
+        })
     }
 
     getErrorAuth(codeError: string) {
@@ -204,7 +231,7 @@ export class LoginComponent implements OnInit {
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
                         this.errorEmail = true;
-                        console.log(response);
+                        // console.log(response);
                     });
 
                 break;
@@ -229,8 +256,23 @@ export class LoginComponent implements OnInit {
 
                 break;
 
-            default:
+            case 'auth/email-already-in-use':
+                this.alertService.confirm("Email en uso", "Ingrese un nuevo correo")
+                    .then((response) => {
+                        this.emailRef.nativeElement.focus();
+                        this.errorEmail = true;
+                    });
                 break;
+
+            case 'auth/weak-password':
+                this.alertService.confirm("Contraseña débil", "La contraseña debe contener al menos 6 digitos")
+                    .then((response) => {
+                        this.passRef.nativeElement.focus();
+                        this.errorPass = true;
+                        this.errorVerifyPass = true;
+                    });
+                break;
+
         }
     }
 }

@@ -9,6 +9,7 @@ import { SharedService } from "./shared/services/shared.service";
 import { LoginComponent } from './pages/login/login.component';
 import { ContraseniaOlvidadaComponent } from './pages/contrasenia-olvidada/contrasenia-olvidada.component';
 
+
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -38,6 +39,8 @@ import { environment } from '../environments/environment';
     ],
     bootstrap: [AppComponent]
 })
+
+
 
 export class AppModule {
 }

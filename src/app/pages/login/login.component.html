@@ -8,7 +8,7 @@
 </div>
 
 <section class="row">
-    <div class="background" style="height: 100vh;width: 100vw">
+    <div class="background bgsize">
         <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10" align="center">
 
             <!--CARD DE AUTENTIFICACION-->
@@ -80,8 +80,8 @@
                                    (click)="showPassLogin=!showPassLogin"></i>
                             </div>
                             <div align="center" style="width: 100%">
-                                <div class="m-t-20 cursor-pointer">¿Olvidaste tu
-                                    contraseña?
+                                <div class="m-t-20 cursor-pointer"><a [routerLink]="['/contrasenia-olvidada']"> ¿Olvidaste tu
+                                    contraseña?</a>
                                 </div>
                             </div>
 
@@ -185,7 +185,7 @@
                                         <!-- [(ngModel)]="userRegister.radioTerms" -->
                                         <span class="custom-control-indicator"></span>
                                     </label>
-                                    <span style="color: #32c787" class=" cursor-pointer custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} " (click)="showInfoTerms()">Acepto Términos y Condiciones</span>
+                                    <span style="color: #32c787" class=" cursor-pointer custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} " (click)="showInfoTerms(userRegister)">Acepto Términos y Condiciones</span>
                                 </div>
                                 <button  class="cursor-pointer btn btn-success btn-lg btnLogin btn-block" data-toggle="tooltip" data-placement="right" title="Verifica todos los campos" (click)="registerUser(userRegister)">Registrate
                                 </button>
