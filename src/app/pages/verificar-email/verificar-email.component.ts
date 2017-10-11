@@ -26,6 +26,11 @@ export class VerificarEmailComponent implements OnInit {
 
   verifyEmail(){
       // this.afAuth.auth.applyActionCode(code);
+      this.afAuth.auth.applyActionCode("").then(response =>{
+          
+      }).catch((error:any) =>{
+
+      })
   }
 
   ngOnInit() {

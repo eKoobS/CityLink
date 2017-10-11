@@ -6,6 +6,8 @@ const ROUTES: Routes = [
     { path: 'login', loadChildren: './pages/login/login.module#LoginModule'},
     { path: 'auth' , loadChildren: './pages/auth/auth.module#AuthModule' }
 
+
 ];
 
 export const routing = RouterModule.forRoot(ROUTES);
+
