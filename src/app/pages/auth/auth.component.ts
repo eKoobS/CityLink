@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
             this.userInfoBasic=user;
         });
     }
-    
+
     ngOnInit() {
     }
 
