@@ -62,20 +62,20 @@ export class AuthComponent implements OnInit {
     getFirebaseErrors(error: string) {
         switch (error) {
             case 'auth/expired-action-code':
-                this.alertService.confirm("Oooops!, huston we have a problem!","Este enlace ya ha sido utilizado");
+                this.alertService.confirm("Oooops!, huston we have a problem!", "Este enlace ya ha sido utilizado");
                 break;
 
             case 'auth/invalid-action-code':
-                this.alertService.confirm("Enlace invalido","Este enlace no existe, intente con otro");
+                this.alertService.confirm("Enlace invalido", "Este enlace no existe, intente con otro");
                 break;
 
             case 'auth/user-disabled':
-                this.alertService.confirm("Usuario deshabilitado","Tu usuario ha sido bloqueado por " +
-                                                "alguna razon contacta al administrador",);
+                this.alertService.confirm("Usuario deshabilitado", "Tu usuario ha sido bloqueado por " +
+                    "alguna razon contacta al administrador",);
                 break;
 
             case 'auth/user-not-found':
-                this.alertService.confirm("Usuario no encontrado","No pudimos enviarte el codigo de verificacion" +
+                this.alertService.confirm("Usuario no encontrado", "No pudimos enviarte el codigo de verificacion" +
                     " debido a que no encontramos tu usuario");
                 break;
         }
@@ -93,8 +93,7 @@ export class AuthComponent implements OnInit {
     restorePass(user: userRegister) {
         if (!this.errorInRestorePassword(user)) {
             this.isLoading = true;
-
-            this.afAuth.auth.confirmPasswordReset(this.getParameterByName("oobCode"),user.pass)
+            this.afAuth.auth.confirmPasswordReset(this.getParameterByName("oobCode"), user.pass)
                 .then(response => {
 
                     this.alertService.confirmSuccess("Contraseña restablecida", "Inicie sesion para ingresar a la app")
@@ -104,6 +103,7 @@ export class AuthComponent implements OnInit {
 
                 }).catch((error: any) => {
                 this.getFirebaseErrors(error.code);
+                this.isLoading = false;
             })
 
         }
