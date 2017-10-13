@@ -1,11 +1,19 @@
+<div class="page-loader2" *ngIf="isLoading">
+    <div class="page-loader__spinner">
+        <svg viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</div>
+
 <section class="row">
     <div class="background bgsize">
         <div class="offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-1 col-sm-10 offset-1 col-10"
              align="center">
 
             <!--CARD DE VERIFICAR EMAIL-->
-            <div class="card p-3 m-t-20 cardLogin-Register"
-                 style="height: 430px!important;" *ngIf="view=='verifyEmail'">
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
+                 style="height: 430px!important;" *ngIf="view=='verifyEmail'&& !errorInVerifyEmail">
                 <div class="card-header" align="center">
                     <h2>Has verificado tu email con éxito!</h2>
                 </div>
@@ -17,11 +25,30 @@
                     <button class="btn btn-success btn-block f-s-18" (click)="verifyEmail()"><a
                             [routerLink]="['/usuarios']" style="color: white;">Ir a la app</a></button>
                 </div>
+
+            </div>
+
+            <!--Card de error de verificacion de email-->
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
+                 style="height: 430px!important;" *ngIf="view=='errorCodeEmail'">
+                <div class="card-header" align="center">
+                    <h2>Lo siento, ha ocurrido un error !</h2>
+                </div>
+                <div class="card-body" align="center">
+                    <i class="zmdi zmdi-thumb-down iconStyle animated  {{ animatedIcon ? 'bounce' : ' ' }}"></i>
+                    <p class="f-s-18">Intenta de nuevo</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success btn-block f-s-18" [routerLink]="['/login']"><a
+                             style="color: white;">Regresar al inicio</a></button>
+                </div>
             </div>
 
             <!--CARD DE CAMBIAR CONTRASEÑA-->
-            <div class="card p-3 m-t-20 cardLogin-Register"
+
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
                  style="" *ngIf="view=='resetPassword'">
+
                 <!--Card header/cambiar contraseña-->
                 <div class="card-header">
                     <h2>Restablecer tu contraseña</h2>
