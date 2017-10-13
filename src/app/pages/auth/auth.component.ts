@@ -1,8 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {userRegister} from "../../interfaces/user.interface";
-import {alertService} from '../../services/alert.service'
-import {LoginComponent} from "../login/login.component";
+import {alertService} from '../../services/alert.service';
 
 @Component({
     selector: 'app-auth',
@@ -26,7 +25,9 @@ export class AuthComponent implements OnInit {
     @ViewChild('verifyPass') private verifyPassRef: ElementRef;
 
     constructor(private afAuth: AngularFireAuth,
-                private alertService: alertService) {
+
+                private alertService:alertService) {
+
         this.view=this.getParameterByName("mode");
         if(this.view=="verifyEmail"){
             this.verifyEmail();
@@ -44,12 +45,36 @@ export class AuthComponent implements OnInit {
     ngOnInit() {
     }
 
-    verifyEmail() {
-        this.afAuth.auth.applyActionCode(this.getParameterByName("oobCode")).then(response => {
 
-        }).catch((error: any) => {
-            console.log(error.code);
+    verifyEmail(){
+        // this.afAuth.auth.applyActionCode(code);
+        this.afAuth.auth.applyActionCode(this.getParameterByName("oobCode")).then(response =>{
+
+        }).catch((error:any) =>{
+            this.getFirebaseErrors(error.code);
         })
+    }
+
+    getFirebaseErrors(error:string){
+        switch( error ){
+            case 'auth/expired-action-code':
+                this.alertService.confirm("Oooops!, huston we have a problem!","Este enlace ya ha sido utilizado");
+                break;
+
+            case 'auth/invalid-action-code':
+                this.alertService.confirm("Enlace invalido","Este enlace no existe, intente con otro");
+                break;
+
+            case 'auth/user-disabled':
+                this.alertService.confirm("Usuario deshabilitado","Tu usuario ha sido bloqueado por " +
+                                                "alguna razon contacta al administrador");
+                break;
+
+            case 'auth/user-not-found':
+                this.alertService.confirm("Usuario no encontrado","No pudimos enviarte el codigo de verificacion" +
+                    " debido a que no encontramos tu usuario");
+                break;
+        }
 
     }
 
