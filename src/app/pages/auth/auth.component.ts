@@ -89,7 +89,6 @@ export class AuthComponent implements OnInit {
 
     restorePass(user: userRegister) {
         if (!this.errorInRestorePassword(user)) {
-            this.isLoading = true;
 
             this.afAuth.auth.confirmPasswordReset(this.getParameterByName("oobCode"),user.pass)
                 .then(response => {

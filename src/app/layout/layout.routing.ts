@@ -6,7 +6,8 @@ const LAYOUT_ROUTES: Routes = [
         //Home
         { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
         { path: 'usuarios', loadChildren: '../pages/usuarios/usuarios.module#UsuariosModule' },
-        { path: 'categorias', loadChildren: '../pages/categorias/categorias.module#CategoriasModule' }
+        { path: 'categorias', loadChildren: '../pages/categorias/categorias.module#CategoriasModule' },
+      { path: 'perfil-ps' , loadChildren: '../pages/perfil-ps/perfil-ps.module#PerfilPsModule' }
     ]}
 ];
 
