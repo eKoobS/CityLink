@@ -17,28 +17,27 @@ export class AuthComponent implements OnInit {
     closeError: boolean = false;
     isLoading: boolean = false;
 
-    animatedIcon:boolean=true;
-    userInfoBasic:any;
-    user: userRegister[]=[];
+    animatedIcon: boolean = true;
+    userInfoBasic: any;
+    user: userRegister[] = [];
 
     @ViewChild('pass') private passRef: ElementRef;
     @ViewChild('verifyPass') private verifyPassRef: ElementRef;
 
     constructor(private afAuth: AngularFireAuth,
+                private alertService: alertService) {
 
-                private alertService:alertService) {
-
-        this.view=this.getParameterByName("mode");
-        if(this.view=="verifyEmail"){
+        this.view = this.getParameterByName("mode");
+        if (this.view == "verifyEmail") {
             this.verifyEmail();
         }
 
         setInterval(() => {
             this.animatedIcon = !this.animatedIcon;
         }, 2000);
-        afAuth.auth.onAuthStateChanged((user)=> {
+        afAuth.auth.onAuthStateChanged((user) => {
             // console.log(user)
-            this.userInfoBasic=user;
+            this.userInfoBasic = user;
         });
     }
 
@@ -46,33 +45,34 @@ export class AuthComponent implements OnInit {
     }
 
 
-    verifyEmail(){
+    verifyEmail() {
         // this.afAuth.auth.applyActionCode(code);
-        this.afAuth.auth.applyActionCode(this.getParameterByName("oobCode")).then(response =>{
+        this.afAuth.auth.applyActionCode(this.getParameterByName("oobCode"))
+            .then(response => {
 
-        }).catch((error:any) =>{
+            }).catch((error: any) => {
             this.getFirebaseErrors(error.code);
         })
     }
 
-    getFirebaseErrors(error:string){
-        switch( error ){
+    getFirebaseErrors(error: string) {
+        switch (error) {
             case 'auth/expired-action-code':
-                this.alertService.confirm("Oooops!, huston we have a problem!","Este enlace ya ha sido utilizado");
+                this.alertService.confirm("Oooops!, huston we have a problem!", "Este enlace ya ha sido utilizado", 'error');
                 break;
 
             case 'auth/invalid-action-code':
-                this.alertService.confirm("Enlace invalido","Este enlace no existe, intente con otro");
+                this.alertService.confirm("Enlace invalido", "Este enlace no existe, intente con otro", 'error');
                 break;
 
             case 'auth/user-disabled':
-                this.alertService.confirm("Usuario deshabilitado","Tu usuario ha sido bloqueado por " +
-                                                "alguna razon contacta al administrador");
+                this.alertService.confirm("Usuario deshabilitado", "Tu usuario ha sido bloqueado por " +
+                    "alguna razon contacta al administrador", 'error');
                 break;
 
             case 'auth/user-not-found':
-                this.alertService.confirm("Usuario no encontrado","No pudimos enviarte el codigo de verificacion" +
-                    " debido a que no encontramos tu usuario");
+                this.alertService.confirm("Usuario no encontrado", "No pudimos enviarte el codigo de verificacion" +
+                    " debido a que no encontramos tu usuario", 'error');
                 break;
         }
 
@@ -86,21 +86,30 @@ export class AuthComponent implements OnInit {
 
     }
 
-    resetPassword(){
-
-    }
-    restorePass(user){
+    restorePass(user: userRegister) {
         if (!this.errorInRestorePassword(user)) {
-            this.isLoading=true;
-            this.alertService.success("Contraseña restablecida","Inicie sesion para ingresar a la app");
+            this.isLoading = true;
+
+            this.afAuth.auth.confirmPasswordReset(this.getParameterByName("oobCode"),user.pass)
+                .then(response => {
+
+                    this.alertService.confirm("Contraseña restablecida", "Inicie sesion para ingresar a la app", 'success')
+                        .then(() => {
+                            window.location.href = '#/login';
+                        })
+
+                }).catch((error: any) => {
+                this.getFirebaseErrors(error.code);
+            })
+
         }
     }
 
-    errorInRestorePassword(user: userRegister){
+    errorInRestorePassword(user: userRegister) {
         let errors: boolean = false;
 
         // verificacion de contraseña vacia
-        if (user.pass=="" || user.pass==null) {
+        if (user.pass == "" || user.pass == null) {
             this.passRef.nativeElement.focus();
             this.errorPass = true;
             this.sendError();
@@ -123,7 +132,6 @@ export class AuthComponent implements OnInit {
             this.sendError();
             errors = true;
         }
-
 
 
         return errors;
