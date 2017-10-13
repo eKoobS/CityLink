@@ -16,6 +16,7 @@ export class AuthComponent implements OnInit {
     showError: boolean = false;
     closeError: boolean = false;
     isLoading: boolean = false;
+    errorInVerifyEmail:boolean=true;
 
     animatedIcon: boolean = true;
     userInfoBasic: any;
@@ -49,8 +50,11 @@ export class AuthComponent implements OnInit {
         // this.afAuth.auth.applyActionCode(code);
         this.afAuth.auth.applyActionCode(this.getParameterByName("oobCode"))
             .then(response => {
-
+                this.errorInVerifyEmail=false;
+                this.view = this.getParameterByName("mode");
             }).catch((error: any) => {
+                this.errorInVerifyEmail=true;
+                this.view="errorCodeEmail";
             this.getFirebaseErrors(error.code);
         })
     }
@@ -73,7 +77,6 @@ export class AuthComponent implements OnInit {
             case 'auth/user-not-found':
                 this.alertService.confirm("Usuario no encontrado","No pudimos enviarte el codigo de verificacion" +
                     " debido a que no encontramos tu usuario");
-
                 break;
         }
 

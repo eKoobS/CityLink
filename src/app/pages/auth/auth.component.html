@@ -4,8 +4,8 @@
              align="center">
 
             <!--CARD DE VERIFICAR EMAIL-->
-            <div class="card p-3 m-t-20 cardLogin-Register"
-                 style="height: 430px!important;" *ngIf="view=='verifyEmail'">
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
+                 style="height: 430px!important;" *ngIf="view=='verifyEmail'&& !errorInVerifyEmail">
                 <div class="card-header" align="center">
                     <h2>Has verificado tu email con éxito!</h2>
                 </div>
@@ -19,8 +19,24 @@
                 </div>
             </div>
 
+            <!--Card de error de verificacion de email-->
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
+                 style="height: 430px!important;" *ngIf="view=='errorCodeEmail'">
+                <div class="card-header" align="center">
+                    <h2>Lo siento, ha ocurrido un error !</h2>
+                </div>
+                <div class="card-body" align="center">
+                    <i class="zmdi zmdi-thumb-down iconStyle animated  {{ animatedIcon ? 'bounce' : ' ' }}"></i>
+                    <p class="f-s-18">Intenta de nuevo</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success btn-block f-s-18" [routerLink]="['/login']"><a
+                             style="color: white;">Regresar al inicio</a></button>
+                </div>
+            </div>
+
             <!--CARD DE CAMBIAR CONTRASEÑA-->
-            <div class="card p-3 m-t-20 cardLogin-Register"
+            <div class="card p-3 m-t-20 cardLogin-Register animated fadeIn"
                  style="" *ngIf="view=='resetPassword'">
                 <!--Card header/cambiar contraseña-->
                 <div class="card-header">
