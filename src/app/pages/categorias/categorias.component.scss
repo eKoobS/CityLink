@@ -1,0 +1,33 @@
+.card-size{
+  height: 300px;
+  width: 300px;
+}
+.style-CardHeader{
+  height: 5px!important;
+}
+
+.style-CardBody{
+  height: 100%;
+}
+.style-CardFooter{
+  position: absolute;
+  text-align: center;
+  transition: height 1s, padding-top 1s;
+  height: 50px !important;
+  width: 100%;
+  bottom: 0;
+  opacity: .9;
+}
+.style-CardFooter:hover{
+  height: 100%!important;
+  width:100%!important;
+  padding-top:40%;
+
+}
+
+.imagen{
+  height: 235px;
+  width: 100%;
+  margin-top: 3%;
+  background-size: cover;
+}

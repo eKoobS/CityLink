@@ -6,6 +6,7 @@ import { SharedModule } from "../../shared/shared.module";
 import { FormsModule } from '@angular/forms';
 
 import {  AuthComponent } from './auth.component';
+import {LoginComponent} from '../login/login.component'
 
 //Services
 import {alertService} from '../../services/alert.service'
@@ -26,7 +27,8 @@ const   AUTH_ROUTE = [
     RouterModule.forChild(AUTH_ROUTE)
   ],
     providers: [
-        alertService
+        alertService,
+        LoginComponent
     ]
 })
 

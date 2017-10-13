@@ -5,29 +5,29 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SharedModule } from "../../shared/shared.module";
 import { FormsModule } from '@angular/forms';
 
-import {  VerificarEmailComponent } from './verificar-email.component';
+import {  CategoriasComponent } from './categorias.component';
 
 //Services
 import {alertService} from '../../services/alert.service'
 
-const   VERIFICAREMAIL_ROUTE = [
-  { path: '', component: VerificarEmailComponent}
+const   CATEGORIAS_ROUTE = [
+    { path: '', component: CategoriasComponent}
 ];
 
 @NgModule ({
-  declarations: [
-    VerificarEmailComponent
-  ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    SharedModule,
-    BsDropdownModule.forRoot(),
-    RouterModule.forChild(VERIFICAREMAIL_ROUTE)
-  ],
+    declarations: [
+        CategoriasComponent
+    ],
+    imports: [
+        FormsModule,
+        CommonModule,
+        SharedModule,
+        BsDropdownModule.forRoot(),
+        RouterModule.forChild(CATEGORIAS_ROUTE)
+    ],
     providers: [
         alertService
     ]
 })
 
-export class VerificarEmailModule {  }
+export class CategoriasModule {  }

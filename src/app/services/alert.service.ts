@@ -38,15 +38,14 @@ export class alertService {
            })
        }))
     }
-    confirm(title:string, message:string) {
-
+    confirm(title:string, message:string, alertType:string) {
 
         return new Promise((resolve => {
 
             swal({
                 title: title,
                 text: message,
-                type: 'error',
+                type: alertType,
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
             }).then(function () {

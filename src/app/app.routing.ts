@@ -7,7 +7,6 @@ const ROUTES: Routes = [
     { path: 'contrasenia-olvidada', loadChildren: './pages/contrasenia-olvidada/contrasenia-olvidada.module#ContraseniaOlvidadaModule'},
     { path: 'auth' , loadChildren: './pages/auth/auth.module#AuthModule' }
 
-
 ];
 
 export const routing = RouterModule.forRoot(ROUTES);
