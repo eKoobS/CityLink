@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     // radioTerms : boolean=false;
 
     // Observables Firebase
-    userInfoBasic:any;
     user: Observable<firebase.User>;
 
     // Referencias al DOM
@@ -53,8 +52,9 @@ export class LoginComponent implements OnInit {
                 private alertService: alertService) {
 
         afAuth.auth.onAuthStateChanged((user)=> {
-            console.log(user)
-            this.userInfoBasic=user;
+            if(user){
+                window.location.href = '#/categorias';
+            }
         });
 
         this.userInfo = db.list('/usuarios');
@@ -185,7 +185,7 @@ export class LoginComponent implements OnInit {
             this.afAuth.auth.signInWithEmailAndPassword(user.email, user.pass)
                 .then((response: any) => {
                     console.log(response);
-                    // Redigir a otra vista de principal
+                    window.location.href = '#/categorias';
                     this.isLoading = false;
                 })
                 .catch((error: any) => {

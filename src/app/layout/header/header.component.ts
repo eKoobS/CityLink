@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SharedService } from "../../shared/services/shared.service";
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from "../../shared/services/shared.service";
+import {AngularFireAuth} from 'angularfire2/auth';
 
 @Component({
     selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
         this.sharedService.setTheme(this.maThemeModel)
     }
 
-    constructor(private sharedService: SharedService) {
+    constructor(private sharedService: SharedService,
+                private afAuth: AngularFireAuth) {
         sharedService.maThemeSubject.subscribe((value) => {
             this.maThemeModel = value
         })
@@ -60,19 +62,19 @@ export class HeaderComponent implements OnInit {
                 name: 'HTML5 Validation Report',
                 completed: 95,
                 color: ''
-            },{
+            }, {
                 name: 'Google Chrome Extension',
                 completed: '80',
                 color: 'success'
-            },{
+            }, {
                 name: 'Social Intranet Projects',
                 completed: '20',
                 color: 'warning'
-            },{
+            }, {
                 name: 'Bootstrap Admin Template',
                 completed: '60',
                 color: 'danger'
-            },{
+            }, {
                 name: 'Youtube Client App',
                 completed: '80',
                 color: 'info'
@@ -80,7 +82,11 @@ export class HeaderComponent implements OnInit {
         ]
     }
 
-    ngOnInit() {
+    userSignOut() {
+        this.afAuth.auth.signOut();
+        window.location.href = '#/login';
+    }
 
+    ngOnInit() {
     }
 }
