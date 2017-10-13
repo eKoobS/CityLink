@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { alertService } from '../../services/alert.service';
+import {isLoop} from "tslint";
 
 @Component({
     selector: 'app-contrasenia-olvidada',
@@ -13,10 +15,12 @@ export class ContraseniaOlvidadaComponent implements OnInit {
     errorEmail: boolean = false;
     error:boolean = false;
     closeError: boolean = false;
+    isLoading:boolean = false;
 
     @ViewChild('email') private emailRef: ElementRef;
 
-    constructor(private afAuth: AngularFireAuth) {
+    constructor(private afAuth: AngularFireAuth,
+                private  alertService: alertService) {
     }
 
     ngOnInit() {
@@ -24,7 +28,17 @@ export class ContraseniaOlvidadaComponent implements OnInit {
 
     sendEmailVerification(email: string) {
         if(!this.errorInEmailField(email)) {
-            this.afAuth.auth.sendPasswordResetEmail(email, null);
+            this.isLoading = true;
+            this.afAuth.auth.sendPasswordResetEmail(email, null).then((response:any)=>{
+
+                this.alertService.success("Codigo enviado correctamente", "Revise su correo electronico")
+                this.isLoading = false;
+            }).catch((error:any)=>{
+
+                this.alertService.showError(error.code);
+                this.isLoading = false;
+
+            })
         }
     }
 

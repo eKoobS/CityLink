@@ -69,4 +69,27 @@ export class alertService {
             })
         })
     }
+
+    showError(code:string){
+
+        let title:string;
+        let message:string;
+
+        switch(code){
+
+            case 'auth/invalid-email':
+                title = "Email Invalido";
+                message = "Ingresa un email valido 'ejemplo@ejemplo.com'";
+                break;
+
+            case 'auth/user-not-found':
+                title = "Usuario no encontrado";
+                message = "Introduzca un usuario que esté registrado en la aplicación";
+                break;
+
+        }
+
+        this.error(title, message);
+
+    }
 }
