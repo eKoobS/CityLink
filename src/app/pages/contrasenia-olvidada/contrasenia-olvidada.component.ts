@@ -31,7 +31,7 @@ export class ContraseniaOlvidadaComponent implements OnInit {
             this.isLoading = true;
             this.afAuth.auth.sendPasswordResetEmail(email, null).then((response:any)=>{
 
-                this.alertService.success("Codigo enviado correctamente", "Revise su correo electronico")
+                this.alertService.confirmSuccess("Codigo enviado correctamente", "Revise su correo electronico")
                 this.isLoading = false;
             }).catch((error:any)=>{
 
