@@ -4,26 +4,24 @@
              align="center">
 
             <!--CARD DE VERIFICAR EMAIL-->
-            <!--<div class="card p-3 m-t-20 cardLogin-Register"-->
-            <!--style="height: 430px!important;" *ngIf="view=='verifyEmail'">-->
-            <!--<div class="card-header" align="center">-->
-            <!--<h2>Has verificado tu email con éxito!</h2>-->
-            <!--</div>-->
-            <!--<div class="card-body" align="center">-->
-            <!--<i class="zmdi zmdi-thumb-up iconStyle animated {{ animatedIcon? 'tada' : '' }}"></i>-->
-            <!--<p class="f-s-18">Pulsa el siguiente botón para solicitar tu primer servicio</p>-->
-            <!--</div>-->
-            <!--<div class="card-footer">-->
-            <!--<button class="btn btn-success btn-block f-s-18" (click)="verifyEmail()"><a-->
-            <!--[routerLink]="['/usuarios']" style="color: white;">Ir a la app</a></button>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="card p-3 m-t-20 cardLogin-Register"
+                 style="height: 430px!important;" *ngIf="view=='verifyEmail'">
+                <div class="card-header" align="center">
+                    <h2>Has verificado tu email con éxito!</h2>
+                </div>
+                <div class="card-body" align="center">
+                    <i class="zmdi zmdi-thumb-up iconStyle animated {{ animatedIcon? 'tada' : '' }}"></i>
+                    <p class="f-s-18">Pulsa el siguiente botón para solicitar tu primer servicio</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success btn-block f-s-18" (click)="verifyEmail()"><a
+                            [routerLink]="['/usuarios']" style="color: white;">Ir a la app</a></button>
+                </div>
+            </div>
 
             <!--CARD DE CAMBIAR CONTRASEÑA-->
             <div class="card p-3 m-t-20 cardLogin-Register"
-                 style=""
-
-            ><!--*ngIf="view=='resetPassword'"-->
+                 style="" *ngIf="view=='resetPassword'">
                 <!--Card header/cambiar contraseña-->
                 <div class="card-header">
                     <h2>Restablecer tu contraseña</h2>
@@ -75,7 +73,7 @@
                 <!--Card footer-->
                 <div class="card-footer m-t-30">
                     <button class="btn btn-success btn-block f-s-18" (click)="restorePass(user)"><a
-                             style="color: white">Enviar</a>
+                            style="color: white">Enviar</a>
                     </button>
                 </div>
             </div>
