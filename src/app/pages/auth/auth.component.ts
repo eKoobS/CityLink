@@ -48,21 +48,21 @@ export class AuthComponent implements OnInit {
     getFirebaseErrors(error:string){
         switch( error ){
             case 'auth/expired-action-code':
-                this.alertService.confirm("Oooops!, huston we have a problem!","Este enlace ya ha sido utilizado");
+                this.alertService.confirm("Oooops!, huston we have a problem!","Este enlace ya ha sido utilizado","error");
                 break;
 
             case 'auth/invalid-action-code':
-                this.alertService.confirm("Enlace invalido","Este enlace no existe, intente con otro");
+                this.alertService.confirm("Enlace invalido","Este enlace no existe, intente con otro",'error');
                 break;
 
             case 'auth/user-disabled':
                 this.alertService.confirm("Usuario deshabilitado","Tu usuario ha sido bloqueado por " +
-                                                "alguna razon contacta al administrador");
+                                                "alguna razon contacta al administrador", 'error');
                 break;
 
             case 'auth/user-not-found':
                 this.alertService.confirm("Usuario no encontrado","No pudimos enviarte el codigo de verificacion" +
-                    " debido a que no encontramos tu usuario");
+                    " debido a que no encontramos tu usuario",'error');
                 break;
         }
 
