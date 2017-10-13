@@ -228,6 +228,7 @@ export class LoginComponent implements OnInit {
         switch (codeError) {
             case 'auth/user-not-found':
                 this.alertService.confirm("Usuario no encontrado!", "Escriba un usuario valido","error")
+
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
                         this.errorEmail = true;
@@ -238,6 +239,7 @@ export class LoginComponent implements OnInit {
 
             case 'auth/user-disabled':
                 this.alertService.confirm("Email deshabilitado!", "Escriba un email valido","error")
+
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
                         this.errorEmail = true;
@@ -248,6 +250,7 @@ export class LoginComponent implements OnInit {
 
             case 'auth/wrong-password':
                 this.alertService.confirm("Contraseña incorrecta!", "Escriba una contraseña correcta","error")
+
                     .then((response) => {
                         this.passRef.nativeElement.focus();
                         this.errorPass = true;
@@ -258,6 +261,7 @@ export class LoginComponent implements OnInit {
 
             case 'auth/email-already-in-use':
                 this.alertService.confirm("Email en uso", "Ingrese un nuevo correo","error")
+
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
                         this.errorEmail = true;
@@ -266,6 +270,7 @@ export class LoginComponent implements OnInit {
 
             case 'auth/weak-password':
                 this.alertService.confirm("Contraseña débil", "La contraseña debe contener al menos 6 digitos","error")
+
                     .then((response) => {
                         this.passRef.nativeElement.focus();
                         this.errorPass = true;

@@ -40,7 +40,6 @@ export class alertService {
     }
     confirm(title:string, message:string, alertType:string) {
 
-
         return new Promise((resolve => {
 
             swal({
