@@ -38,14 +38,14 @@ export class alertService {
            })
        }))
     }
-    confirm(title:string, message:string, alertType:string) {
+    confirm(title:string, message:string) {
 
         return new Promise((resolve => {
 
             swal({
                 title: title,
                 text: message,
-                type: alertType,
+                type: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
             }).then(function () {
@@ -56,17 +56,20 @@ export class alertService {
 
     }
 
-    success(title:string,message:string){
-        return new Promise((resolve)=>{
+    confirmSuccess(title:string, message:string){
+        return new Promise((resolve => {
+
             swal({
-                title:title,
-                text:message,
-                type:'success',
-                confirmButtonText: 'OK'
+                title: title,
+                text: message,
+                type: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
             }).then(function () {
                 resolve();
             })
-        })
+
+        }))
     }
 
     showError(code:string){
