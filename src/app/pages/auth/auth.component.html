@@ -13,6 +13,7 @@
 
             <!--CARD DE VERIFICAR EMAIL-->
             <div class="card p-3 m-t-20 cardLogin-Register"
+
             style="height: 430px!important;" *ngIf="view=='verifyEmail'">
             <div class="card-header" align="center">
             <h2>Has verificado tu email con éxito!</h2>
@@ -29,8 +30,7 @@
 
             <!--CARD DE CAMBIAR CONTRASEÑA-->
             <div class="card p-3 m-t-20 cardLogin-Register"
-                 style=""
-            *ngIf="view=='resetPassword'"
+                 style="" *ngIf="view=='resetPassword'"
             >
                 <!--Card header/cambiar contraseña-->
                 <div class="card-header">
@@ -83,7 +83,7 @@
                 <!--Card footer-->
                 <div class="card-footer m-t-30">
                     <button class="btn btn-success btn-block f-s-18" (click)="restorePass(user)"><a
-                             style="color: white">Enviar</a>
+                            style="color: white">Enviar</a>
                     </button>
                 </div>
             </div>
