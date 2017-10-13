@@ -4,7 +4,7 @@ const ROUTES: Routes = [
 
     { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     { path: 'login', loadChildren: './pages/login/login.module#LoginModule'},
-    { path: 'auth' , loadChildren: './pages/auth/auth.module#AuthModule' }
+    { path: 'auth' , loadChildren: './pages/auth/auth.module#AuthModule' },
 
 
 ];

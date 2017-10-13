@@ -6,6 +6,7 @@ import { SharedModule } from "../../shared/shared.module";
 import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from "./login.component";
+//import {LoginComponent} from '../login/login.component'
 
 //Services
 import {alertService} from '../../services/alert.service'
