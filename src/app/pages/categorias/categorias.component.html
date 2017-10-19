@@ -1,13 +1,28 @@
 <section class="content content-standard" style=" height:100vh">
-    <h1 align="center">Servicios</h1>
-    <div class="card card-size card-outline-info" style="margin-bottom: 20px!important;cursor: pointer;">
-
-        <div class="card-body style-CardBody card" style="">
-
-            <img src="../../../assets/images/plomero.jpg" class="imagen" alt="">
-        </div>
-        <div class="card-footer p-b-0 style-CardFooter" align="center" style="background-color: #607d8b">
-            <span style="color: white; font-size: 26px;margin-top:50%!important;">Plomeros</span>
+    <h1 align="center">
+        <span style="color:#2574A9">S</span>
+        <span style="color:#2574A9">e</span>
+        <span style="color:#2574A9">r</span>
+        <span style="color:#2574A9">v</span>
+        <span style="color:#2574A9">i</span>
+        <span style="color:#2574A9">c</span>
+        <span style="color:#2574A9">i</span>
+        <span style="color:#2574A9">o</span>
+        <span style="color:#2574A9">s</span>
+    </h1>
+    <div class="row">
+        <div class="col-4" *ngFor="let c of categoria">
+            <div class="card card-size card-outline-info cardCategoriasStyle" (click)="verServicio(c.id)"
+                 align="center">
+                <div class="card-body style-CardBody card" style="">
+                    <img src="{{ c.img }}" class="imagen" alt="">
+                </div>
+                <div class="card-footer p-b-0 style-CardFooter" (click)="verServicio(c.id)" align="center"
+                     [style.backgroundColor]="c.color">
+                    <span style="color: white; font-size: 26px;margin-top:50%!important;">{{ c.nombreServicio }}</span>
+                </div>
+            </div>
         </div>
     </div>
+
 </section>

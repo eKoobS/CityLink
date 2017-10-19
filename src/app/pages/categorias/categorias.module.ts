@@ -9,6 +9,7 @@ import {  CategoriasComponent } from './categorias.component';
 
 //Services
 import {alertService} from '../../services/alert.service'
+import {CategoriasService} from '../../services/categorias.service';
 
 const   CATEGORIAS_ROUTE = [
     { path: '', component: CategoriasComponent}
@@ -26,7 +27,8 @@ const   CATEGORIAS_ROUTE = [
         RouterModule.forChild(CATEGORIAS_ROUTE)
     ],
     providers: [
-        alertService
+        alertService,
+        CategoriasService
     ]
 })
 

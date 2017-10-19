@@ -5,6 +5,13 @@
 .style-CardHeader{
   height: 5px!important;
 }
+.cardCategoriasStyle{
+  margin-bottom: 20px!important;
+  cursor: pointer;
+  display: inline-block;
+  margin:5px;
+  margin-left: 20px;
+}
 
 .style-CardBody{
   height: 100%;
@@ -26,8 +33,8 @@
 }
 
 .imagen{
-  height: 235px;
-  width: 100%;
+  height: 243px;
+  width: 50%;
   margin-top: 3%;
   background-size: cover;
 }

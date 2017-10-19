@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {CategoriasService} from '../../services/categorias.service';
+import {CategoriasInterface} from '../../interfaces/categorias.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias',
@@ -8,7 +11,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class CategoriasComponent implements OnInit {
 
-  constructor( private afAuth: AngularFireAuth) {
+  categoria:CategoriasInterface[] = [];
+  constructor( private afAuth: AngularFireAuth,
+               private ServicioCategorias:CategoriasService,
+               private activeRoute: ActivatedRoute,
+               private router: Router) {
 
     afAuth.auth.onAuthStateChanged( (user) =>{
       if(user == null){
@@ -16,9 +23,21 @@ export class CategoriasComponent implements OnInit {
       }
     })
 
+      this.categoria=this.ServicioCategorias.getCategoriasServicio();
+
   }
 
   ngOnInit() {
+
+  }
+
+  verServicio(id:string){
+    this.router.navigate(['/usuarios', id]);
+    for(let c in this.categoria){
+      if(id == this.categoria[c].id){
+        console.log(this.categoria[c]);
+      }
+    }
   }
 
 }

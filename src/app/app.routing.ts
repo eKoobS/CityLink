@@ -9,5 +9,5 @@ const ROUTES: Routes = [
 
 ];
 
-export const routing = RouterModule.forRoot(ROUTES);
+export const routing = RouterModule.forRoot(ROUTES)
 

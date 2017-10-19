@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './header/search/search.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
+import {AbbreviateTextPipe} from "../pipes/abbreviate-text.pipe";
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -25,7 +26,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         HeaderComponent,
         SearchComponent,
         NavigationComponent,
-        NavigationTriggerComponent
+        NavigationTriggerComponent,
+        AbbreviateTextPipe
     ],
     imports: [
         CommonModule,

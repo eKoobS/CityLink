@@ -132,23 +132,23 @@
   }
 }
 
-.top-nav__notify {
-  &:before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    background-color: lighten($red, 2%);
-    color: $white;
-    border-radius: 50%;
-    position: absolute;
-    top: -3px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    @include animate(flash, 2000ms);
-    animation-iteration-count: infinite;
-  }
-}
+//.top-nav__notify {
+//  &:before {
+//    content: '';
+//    width: 7px;
+//    height: 7px;
+//    background-color: lighten($red, 2%);
+//    color: $white;
+//    border-radius: 50%;
+//    position: absolute;
+//    top: -3px;
+//    right: 0;
+//    left: 0;
+//    margin: auto;
+//    @include animate(flash, 2000ms);
+//    animation-iteration-count: infinite;
+//  }
+//}
 
 
 // App shortcuts
@@ -188,34 +188,93 @@
     }
   }
 }
+//logo Mio----------------------------------------------------------
+.logo{
+  display: inline-block;
+  color: #FFFFFF;
+  margin-left: 10px;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+//userMenu
+.positionCard {
+  margin-top: 15px;
+  right: 30px;
+  width: 250px;
+  position: absolute;
+  box-shadow: 0px 3px 13px rgba(0, 0, 0, .3);
+}
+.itemHeaderMenu{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.itemHeaderMenu:hover{
+  background-color: #328bc7;
+  color: white;
+  //margin-left: -30px;
+}
 
+.alignItem{
+  left: 0px;
+  position: absolute;
+}
+
+//estilos barra de busueda header
+.textboxSearch{
+  width: 300px;
+  background-color: white;
+  border-radius: 5px 0px 0px 5px;
+}
+.btnGoSearch{
+  background-color: lightgray;
+  border-radius: 0px 5px 5px 0px;
+}
+//----------------------
+
+//estilos de items en opciones del header
+.iconUserMenu{
+  width: 40px;
+  border-radius: 100%;
+}
+.iconUserMenuCard{
+  width: 40px;
+  border-radius: 100%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.iconsMenu{
+  font-size: 20px;
+}
+//----------------------
 
 // Top Navigation
-.top-menu {
-  position: absolute;
-  background-color: $white;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  box-shadow: 0 3px 5px -2px rgba($black, 0.1);
-  justify-content: center;
-  white-space: nowrap;
-
-  & > li {
-    &.active {
-      position: relative;
-      box-shadow: 0 0 0 -2px red;
-    }
-
-    & > a {
-      line-height: 100%;
-      color: lighten($body-color, 15%);
-      font-weight: $font-weight-bold;
-      text-transform: uppercase;
-
-      &.active {
-        color: $headings-color;
-      }
-    }
-  }
-}
+//.top-menu {
+//  position: absolute;
+//  background-color: $white;
+//  left: 0;
+//  top: 100%;
+//  width: 100%;
+//  box-shadow: 0 3px 5px -2px rgba($black, 0.1);
+//  justify-content: center;
+//  white-space: nowrap;
+//
+//  & > li {
+//    &.active {
+//      position: relative;
+//      box-shadow: 0 0 0 -2px red;
+//    }
+//
+//    & > a {
+//      line-height: 100%;
+//      color: lighten($body-color, 15%);
+//      font-weight: $font-weight-bold;
+//      text-transform: uppercase;
+//
+//      &.active {
+//        color: $headings-color;
+//      }
+//    }
+//  }
+//}
