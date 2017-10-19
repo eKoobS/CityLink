@@ -1,3 +1,92 @@
-<p>
-  perfil-ps works!
-</p>
+<section class="content content-standard" style=" height:100vh">
+
+
+    <div class="card-body style-CardBody card" style="height: 635px; width: 1380px">
+        <div class="row">
+
+            <div class="card col-3" style="height: 635px; margin-left: 12px">
+
+                <div class="col-12">
+                    <!--<div align="center">-->
+                    <!--<div class="row">-->
+
+                            <i class="zmdi zmdi-account-circle zmdi-hc-5x m-t-20"
+                               style="font-size: 160px; margin-left: 80px;">
+
+                            </i>
+
+                <div class="heartBackground">
+
+                            <i class="zmdi zmdi-favorite heartPosition" align="center" *ngIf="showHeartFull"></i>
+                            <i class="zmdi zmdi-favorite-outline heartPosition" align="center" *ngIf="showHeart"></i>
+
+                </div>
+                            <!--<i class="zmdi zmdi-circle-o zmdi-hc-5x"></i>-->
+
+                    <!--</div>-->
+
+
+                    <!--<i class="zmdi zmdi-circle-o zmdi-hc-5x" style="margin-left: 115px; margin-bottom: 10px;"></i>-->
+                    <!--</div>-->
+                    <div class="m-t-30" align="center" style="font-size: 20px">{{datosPsServicio.nombrePrestador}}</div>
+                    <div align="center" class="m-t-20">
+                        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: #ffe031"></i>
+                        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: #ffe031"></i>
+                        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: #ffe031"></i>
+                        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: #ffe031"></i>
+                        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: #ffe031"></i>
+                    </div>
+                    <div align="center">
+                        <div class="m-t-20" style="font-size: 16px">Teléfono(s):</div>
+                        <div class="m-t-5">
+                            <i class="zmdi zmdi-phone zmdi-hc-lg"><label class="m-l-10">{{datosPsServicio.telefono}}</label></i>
+                        </div>
+                        <div>
+                            <i class="zmdi zmdi-whatsapp zmdi-hc-lg"><label
+                                    class="m-l-10">{{datosPsServicio.telefono}}</label></i>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <div class="m-t-20" style="font-size: 16px">Horarios:</div>
+                        <label>{{datosPsServicio.horario}}</label>
+                    </div>
+                    <div align="center">
+
+                        <button class="btn btn-danger btn-lg m-t-30 m-b-20"
+                                style=" border-radius: 5px 5px 5px 5px"><i class="zmdi zmdi-alert-circle"></i>
+                            Reportar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--Seccion de la derecha-->
+            <div class="col-8" >
+
+                <div class="card-header" style="width: 1000px">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item {{tab=='ubicacion' ? 'active':''}}" style="margin-left: 115px;">
+                            <a class="nav-link {{tab=='acercaDe' ? 'active':''}}" (click)="tab='acercaDe'" [routerLink]="['acercaDe']">Acerca de</a>
+                        </li>
+                        <li class="nav-item {{tab=='comentarios' ? 'active':''}}">
+                            <a class="nav-link {{tab=='comentarios' ? 'active':''}}" (click)="tab='comentarios'" [routerLink]="['comentarios']" style="margin-left: 100px;">Comentarios</a>
+                        </li>
+                        <li class="nav-item {{tab=='galeria' ? 'active':''}}">
+                            <a class="nav-link {{tab=='galeria' ? 'active':''}}" (click)="tab='galeria'" [routerLink]="['galeria']" style="margin-left: 100px;">Galeria</a>
+                        </li>
+                        <li class="nav-item {{tab=='ubicacion' ? 'active':''}}">
+                            <a class="nav-link {{tab=='ubicacion' ? 'active':''}}"
+                               (click)="tab='ubicacion'" [routerLink]="['ubicacion']" style="margin-left: 100px;">Ubicación</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body" style="overflow-y: auto; overflow-x: hidden; height: 500px; width: 100%; padding-right: 5%">
+                    <router-outlet></router-outlet>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>

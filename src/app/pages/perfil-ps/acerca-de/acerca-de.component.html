@@ -1,0 +1,33 @@
+<!--Descripcion del servicio-->
+<div>
+    <span class="m-l-50" style="font-size: 18px ">Descripción del servicio</span>
+    <p class="m-t-10 m-l-50" align="justify">{{datosAcercaDeUser.descripcionServicio}} </p>
+</div>
+<!--Trabajos realizados-->
+<div>
+    <span class="m-l-50" style="font-size: 18px">Trabajos realizados</span>
+    <p class="m-l-50 m-t-10" *ngFor="let trabajo of datosAcercaDeUser.trabajosRealizados">{{'- '+ trabajo.trabajo}}</p>
+</div>
+<!--Informacion de contacto-->
+<div>
+    <span class="m-l-50" style="font-size: 18px">Información de contacto</span>
+    <div class="m-l-50 m-t-10" style="list-style: none">
+        <div><i class="zmdi zmdi-phone zmdi-hc-lg"></i>
+            <label class="m-l-10">{{datosAcercaDeUser.telefono}}</label>
+        </div>
+        <div><i class="zmdi zmdi-whatsapp zmdi-hc-lg"></i>
+            <label class="m-l-10">{{datosAcercaDeUser.whatsapp}}</label>
+        </div>
+        <div><i class="zmdi zmdi-email"></i>
+            <label class="m-l-10">{{datosAcercaDeUser.email}}</label>
+        </div>
+        <div><i class="zmdi zmdi-pin"></i>
+            <label class="m-l-10">{{'Calle '+ datosAcercaDeUser.calle}} {{'#'+ datosAcercaDeUser.numero}}
+                {{'Colonia '+ datosAcercaDeUser.colonia}} {{'CP. '+ datosAcercaDeUser.cp}}</label>
+        </div>
+        <div><i class="zmdi zmdi-time"></i>
+            <label class="m-l-10">{{datosAcercaDeUser.horario}}</label>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+.heartPosition{
+  position: relative;
+  top: 25%;
+  color: red;
+  font-size: 30px;
+  left: 25%;
+}
+
+.heartBackground{
+  height: 50px;
+  width: 50px;
+  background-color: #FFFFFF;
+  border: 1px solid #707070 ;
+  border-radius: 100%;
+  top: 20%;
+  position: absolute;
+  left: 42%;
+
+}
