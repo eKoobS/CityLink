@@ -16,6 +16,18 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
 import {AbbreviateTextPipe} from "../pipes/abbreviate-text.pipe";
 
+import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.component";
+import {ComentariosComponent} from "../pages/perfil-ps/comentarios/comentarios.component";
+import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
+import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
+import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
+
+
+import {alertService} from "../services/alert.service";
+import {perfil_psService} from "../services/perfil-ps.service";
+import {acerca_DeService} from "../services/acerca-de.service";
+
+
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
 }
@@ -27,7 +39,13 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SearchComponent,
         NavigationComponent,
         NavigationTriggerComponent,
-        AbbreviateTextPipe
+
+        AbbreviateTextPipe,
+        AcercaDeComponent,
+        PerfilPSComponent,
+        ComentariosComponent,
+        GaleriaComponent,
+        UbicacionComponent
     ],
     imports: [
         CommonModule,
@@ -37,6 +55,11 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ProgressbarModule.forRoot(),
         ButtonsModule.forRoot(),
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
+    ],
+    providers: [
+        alertService,
+        perfil_psService,
+        acerca_DeService
     ]
 })
 
