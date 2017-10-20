@@ -17,15 +17,15 @@ import { NavigationTriggerComponent } from './header/navigation-trigger/navigati
 import {AbbreviateTextPipe} from "../pipes/abbreviate-text.pipe";
 
 import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.component";
-import {ComentariosComponent} from "../pages/perfil-ps/comentarios/comentarios.component";
+import {tabComentarioComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
 import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
 
 
 import {alertService} from "../services/alert.service";
-import {perfil_psService} from "../services/perfil-ps.service";
-import {acerca_DeService} from "../services/acerca-de.service";
+import {userProviderService} from "../services/userProvider.service";
+import {ComentarioComponent} from "../pages/perfil-ps/tabComentario/comentario/comentario.component";
 
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -43,8 +43,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         AbbreviateTextPipe,
         AcercaDeComponent,
         PerfilPSComponent,
-        ComentariosComponent,
+        tabComentarioComponent,
         GaleriaComponent,
+        ComentarioComponent,
         UbicacionComponent
     ],
     imports: [
@@ -58,8 +59,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ],
     providers: [
         alertService,
-        perfil_psService,
-        acerca_DeService
+        userProviderService
     ]
 })
 

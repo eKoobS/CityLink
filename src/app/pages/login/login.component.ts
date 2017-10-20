@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {userRegister} from "../../interfaces/user.interface";
+import {userAuthInterface} from "../../interfaces/user.interface";
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     closeError: boolean = false;
     view: string = "login";
     showPassLogin: boolean = false;
-    userRegister: userRegister[] = [];
+    userRegister: userAuthInterface[] = [];
 
     errorPass: boolean = false;
     errorVerifyPass: boolean = false;
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
 
     }
 
-    registerUser(user: userRegister) {
+    registerUser(user: userAuthInterface) {
 
         if (!this.errorInRegisterFields(user)) {
             this.isLoading=true;
@@ -110,7 +110,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    errorInRegisterFields(user: userRegister) {
+    errorInRegisterFields(user: userAuthInterface) {
         // expresiones regulares
         let patronPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
         let patronEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
@@ -177,7 +177,7 @@ export class LoginComponent implements OnInit {
         }, 2000);
     }
 
-    loginUser(user: userRegister) {
+    loginUser(user: userAuthInterface) {
         if (!this.errorInLoginFields(user)) {
 
             this.isLoading = true;
@@ -195,7 +195,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    errorInLoginFields(user: userRegister) {
+    errorInLoginFields(user: userAuthInterface) {
         let regularExpressionEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
         let errors: boolean = false;
 
@@ -217,7 +217,7 @@ export class LoginComponent implements OnInit {
         return errors;
     }
 
-    showInfoTerms(user: userRegister) {
+    showInfoTerms(user: userAuthInterface) {
         this.alertService.infoTerms('Terminos y Condiciones').then(response => {
             user.terms = true;
         })
@@ -227,7 +227,7 @@ export class LoginComponent implements OnInit {
 
         switch (codeError) {
             case 'auth/user-not-found':
-                this.alertService.confirm("Usuario no encontrado!", "Escriba un usuario valido")
+                this.alertService.confirmError("Usuario no encontrado!", "Escriba un usuario valido")
 
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
@@ -238,7 +238,7 @@ export class LoginComponent implements OnInit {
                 break;
 
             case 'auth/user-disabled':
-                this.alertService.confirm("Email deshabilitado!", "Escriba un email valido")
+                this.alertService.confirmError("Email deshabilitado!", "Escriba un email valido")
 
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
@@ -249,7 +249,7 @@ export class LoginComponent implements OnInit {
                 break;
 
             case 'auth/wrong-password':
-                this.alertService.confirm("Contraseña incorrecta!", "Escriba una contraseña correcta")
+                this.alertService.confirmError("Contraseña incorrecta!", "Escriba una contraseña correcta")
 
                     .then((response) => {
                         this.passRef.nativeElement.focus();
@@ -260,7 +260,7 @@ export class LoginComponent implements OnInit {
                 break;
 
             case 'auth/email-already-in-use':
-                this.alertService.confirm("Email en uso", "Ingrese un nuevo correo")
+                this.alertService.confirmError("Email en uso", "Ingrese un nuevo correo")
 
                     .then((response) => {
                         this.emailRef.nativeElement.focus();
@@ -269,7 +269,7 @@ export class LoginComponent implements OnInit {
                 break;
 
             case 'auth/weak-password':
-                this.alertService.confirm("Contraseña débil", "La contraseña debe contener al menos 6 digitos")
+                this.alertService.confirmError("Contraseña débil", "La contraseña debe contener al menos 6 digitos")
 
                     .then((response) => {
                         this.passRef.nativeElement.focus();

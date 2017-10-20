@@ -12,8 +12,66 @@
   background-color: #FFFFFF;
   border: 1px solid #707070 ;
   border-radius: 100%;
-  top: 20%;
+  top: 135px;
   position: absolute;
   left: 42%;
+
+}
+
+
+
+@media screen and (min-width: 815px)  {
+
+  .provedorInfoLeft{
+  }
+
+  .provedorInfoTop{
+    display: none;
+  }
+
+  .provedorInfoRight{
+    padding-left: 265px;
+  }
+}
+
+@media screen and (max-width: 814px)  {
+
+  .provedorInfoTop{
+  }
+
+  .provedorInfoLeft{
+    display: none;
+  }
+
+  .heartBackground{
+    height: 50px;
+    width: 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #707070;
+    border-radius: 100%;
+    top: 60px;
+    position: absolute;
+    left: 18%;
+  }
+
+  .reportBackground{
+    height: 50px;
+    width: 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #707070 ;
+    border-radius: 100%;
+    top: 60px;
+    position: absolute;
+    right:18%;
+
+  }
+
+  .heartPosition{
+    position: relative;
+    top: 25%;
+    color: red;
+    font-size: 30px;
+    left: 0;
+  }
 
 }

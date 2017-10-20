@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {userRegister} from "../../interfaces/user.interface";
+import {userAuthInterface} from "../../interfaces/user.interface";
 import {alertService} from '../../services/alert.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
 
     animatedIcon: boolean = true;
     userInfoBasic: any;
-    user: userRegister[] = [];
+    user: userAuthInterface[] = [];
 
     @ViewChild('pass') private passRef: ElementRef;
     @ViewChild('verifyPass') private verifyPassRef: ElementRef;
@@ -62,20 +62,20 @@ export class AuthComponent implements OnInit {
     getFirebaseErrors(error: string) {
         switch (error) {
             case 'auth/expired-action-code':
-                this.alertService.confirm("Oooops!, huston we have a problem!", "Este enlace ya ha sido utilizado");
+                this.alertService.confirmError("Oooops!, huston we have a problem!", "Este enlace ya ha sido utilizado");
                 break;
 
             case 'auth/invalid-action-code':
-                this.alertService.confirm("Enlace invalido", "Este enlace no existe, intente con otro");
+                this.alertService.confirmError("Enlace invalido", "Este enlace no existe, intente con otro");
                 break;
 
             case 'auth/user-disabled':
-                this.alertService.confirm("Usuario deshabilitado", "Tu usuario ha sido bloqueado por " +
+                this.alertService.confirmError("Usuario deshabilitado", "Tu usuario ha sido bloqueado por " +
                     "alguna razon contacta al administrador",);
                 break;
 
             case 'auth/user-not-found':
-                this.alertService.confirm("Usuario no encontrado", "No pudimos enviarte el codigo de verificacion" +
+                this.alertService.confirmError("Usuario no encontrado", "No pudimos enviarte el codigo de verificacion" +
                     " debido a que no encontramos tu usuario");
                 break;
         }
@@ -90,7 +90,7 @@ export class AuthComponent implements OnInit {
 
     }
 
-    restorePass(user: userRegister) {
+    restorePass(user: userAuthInterface) {
         if (!this.errorInRestorePassword(user)) {
             this.isLoading = true;
             this.afAuth.auth.confirmPasswordReset(this.getParameterByName("oobCode"), user.pass)
@@ -109,7 +109,7 @@ export class AuthComponent implements OnInit {
         }
     }
 
-    errorInRestorePassword(user: userRegister) {
+    errorInRestorePassword(user: userAuthInterface) {
         let errors: boolean = false;
 
         // verificacion de contraseña vacia

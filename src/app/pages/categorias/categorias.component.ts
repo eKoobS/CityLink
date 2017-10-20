@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {CategoriasService} from '../../services/categorias.service';
-import {CategoriasInterface} from '../../interfaces/categorias.interface';
+import {CategoriesInterface} from '../../interfaces/categorias.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CategoriasComponent implements OnInit {
 
-  categoria:CategoriasInterface[] = [];
+  categoria:CategoriesInterface[] = [];
   constructor( private afAuth: AngularFireAuth,
                private ServicioCategorias:CategoriasService,
                private activeRoute: ActivatedRoute,

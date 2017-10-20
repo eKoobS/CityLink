@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {acerca_deInterface} from "../../../interfaces/acerca_de.interface";
-import {acerca_DeService} from "../../../services/acerca-de.service";
+import {aboutServiceProviderInterface} from "../../../interfaces/acerca_de.interface";
+import{userProviderService} from "../../../services/userProvider.service";
 
 
 @Component({
@@ -10,11 +10,16 @@ import {acerca_DeService} from "../../../services/acerca-de.service";
 })
 export class AcercaDeComponent implements OnInit {
 
-  constructor(private adUserService:acerca_DeService) { }
-    datosAcercaDeUser:acerca_deInterface;
+    serviceProviderInfo:aboutServiceProviderInterface;
+
+    constructor(private serviceProvider:userProviderService) {
+
+    }
+
   ngOnInit() {
-    this.datosAcercaDeUser=this.adUserService.getDatosAcercaDeServicio();
-    console.log(this.datosAcercaDeUser)
+
+      this.serviceProviderInfo=this.serviceProvider.getServiceInfo();
+
   }
 
 }

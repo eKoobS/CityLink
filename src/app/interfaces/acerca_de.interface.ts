@@ -1,4 +1,4 @@
-export interface acerca_deInterface {
+export interface aboutServiceProviderInterface {
     descripcionServicio: string;
     trabajosRealizados: any;
     telefono:number;

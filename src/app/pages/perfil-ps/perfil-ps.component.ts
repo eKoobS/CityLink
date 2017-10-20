@@ -2,11 +2,11 @@
 import {Component, OnInit} from '@angular/core';
 
 //interfaces
-import {perfil_psInterface} from '../../interfaces/perfil_ps.interface';
-import {acerca_deInterface} from "../../interfaces/acerca_de.interface";
+import {providerInterface} from '../../interfaces/perfil_ps.interface';
+import {aboutServiceProviderInterface} from "../../interfaces/acerca_de.interface";
 
 // servicios
-import {perfil_psService} from "../../services/perfil-ps.service";
+import {userProviderService} from "../../services/userProvider.service";
 import {alertService} from "../../services/alert.service";
 
 @Component({
@@ -17,19 +17,20 @@ import {alertService} from "../../services/alert.service";
 export class PerfilPSComponent implements OnInit {
 
     //variable para mandar a llamar el servicio tipo []
-    datosPsServicio: perfil_psInterface;
+    datosPsServicio: providerInterface;
     showHeart:boolean=false;
+    showHeartFull:boolean = true;
     // showHeart:boolean=true;
 
 
     tab: string = 'acercaDe';
 
-    constructor(private psService: perfil_psService,
+    constructor(private psService: userProviderService,
                 private swal: alertService) {
     }
 
     ngOnInit() {
-        this.datosPsServicio = this.psService.getDatos_psServicio();
+        this.datosPsServicio = this.psService.getProviderInfo();
     }
 
 }

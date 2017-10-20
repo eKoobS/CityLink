@@ -1,4 +1,4 @@
-export interface CategoriasInterface{
+export interface CategoriesInterface{
     nombreServicio:string;
     img:string;
     id:string;

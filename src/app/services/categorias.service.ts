@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {CategoriasInterface} from '../interfaces/categorias.interface';
+import {CategoriesInterface} from '../interfaces/categorias.interface';
 
 @Injectable()
 export class CategoriasService {
 
-    categoriasServicio:CategoriasInterface[]=[];
+    categoriasServicio:CategoriesInterface[]=[];
 
     constructor() {
     }

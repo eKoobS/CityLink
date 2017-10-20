@@ -1,32 +1,32 @@
 <!--Descripcion del servicio-->
 <div>
     <span class="m-l-50" style="font-size: 18px ">Descripción del servicio</span>
-    <p class="m-t-10 m-l-50" align="justify">{{datosAcercaDeUser.descripcionServicio}} </p>
+    <p class="m-t-10 m-l-50" align="justify">{{serviceProviderInfo.descripcionServicio}} </p>
 </div>
 <!--Trabajos realizados-->
 <div>
     <span class="m-l-50" style="font-size: 18px">Trabajos realizados</span>
-    <p class="m-l-50 m-t-10" *ngFor="let trabajo of datosAcercaDeUser.trabajosRealizados">{{'- '+ trabajo.trabajo}}</p>
+    <p class="m-l-50 m-t-10" *ngFor="let trabajo of serviceProviderInfo.trabajosRealizados">{{'- '+ trabajo.trabajo}}</p>
 </div>
 <!--Informacion de contacto-->
 <div>
     <span class="m-l-50" style="font-size: 18px">Información de contacto</span>
     <div class="m-l-50 m-t-10" style="list-style: none">
         <div><i class="zmdi zmdi-phone zmdi-hc-lg"></i>
-            <label class="m-l-10">{{datosAcercaDeUser.telefono}}</label>
+            <label class="m-l-10">{{serviceProviderInfo.telefono}}</label>
         </div>
         <div><i class="zmdi zmdi-whatsapp zmdi-hc-lg"></i>
-            <label class="m-l-10">{{datosAcercaDeUser.whatsapp}}</label>
+            <label class="m-l-10">{{serviceProviderInfo.whatsapp}}</label>
         </div>
         <div><i class="zmdi zmdi-email"></i>
-            <label class="m-l-10">{{datosAcercaDeUser.email}}</label>
+            <label class="m-l-10">{{serviceProviderInfo.email}}</label>
         </div>
         <div><i class="zmdi zmdi-pin"></i>
-            <label class="m-l-10">{{'Calle '+ datosAcercaDeUser.calle}} {{'#'+ datosAcercaDeUser.numero}}
-                {{'Colonia '+ datosAcercaDeUser.colonia}} {{'CP. '+ datosAcercaDeUser.cp}}</label>
+            <label class="m-l-10">{{'Calle '+ serviceProviderInfo.calle}} {{'#'+ serviceProviderInfo.numero}}
+                {{'Colonia '+ serviceProviderInfo.colonia}} {{'CP. '+ serviceProviderInfo.cp}}</label>
         </div>
         <div><i class="zmdi zmdi-time"></i>
-            <label class="m-l-10">{{datosAcercaDeUser.horario}}</label>
+            <label class="m-l-10">{{serviceProviderInfo.horario}}</label>
         </div>
     </div>
 </div>

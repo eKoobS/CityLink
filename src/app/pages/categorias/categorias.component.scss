@@ -1,6 +1,7 @@
 .card-size{
-  height: 300px;
-  width: 300px;
+  height:300px;
+  width: 100%;
+  cursor: pointer;
 }
 .style-CardHeader{
   height: 5px!important;
@@ -9,8 +10,6 @@
   margin-bottom: 20px!important;
   cursor: pointer;
   display: inline-block;
-  margin:5px;
-  margin-left: 20px;
 }
 
 .style-CardBody{

@@ -38,7 +38,7 @@ export class alertService {
            })
        }))
     }
-    confirm(title:string, message:string) {
+    confirmError(title:string, message:string) {
 
         return new Promise((resolve => {
 

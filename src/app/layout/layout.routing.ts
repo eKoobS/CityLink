@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 import {LayoutComponent} from './layout.component';
 import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.component";
-import {ComentariosComponent} from "../pages/perfil-ps/comentarios/comentarios.component";
+import {tabComentarioComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
 import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
@@ -19,7 +19,7 @@ const LAYOUT_ROUTES: Routes = [
             component: PerfilPSComponent,
             children: [
                 { path: 'acercaDe', component: AcercaDeComponent},
-                { path: 'comentarios', component: ComentariosComponent},
+                { path: 'comentarios', component: tabComentarioComponent},
                 { path: 'galeria', component: GaleriaComponent},
                 { path: 'ubicacion', component: UbicacionComponent},
                 { path: '**', component: AcercaDeComponent}

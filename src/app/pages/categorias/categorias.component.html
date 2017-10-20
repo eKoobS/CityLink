@@ -1,18 +1,10 @@
 <section class="content content-standard" style=" height:100vh">
     <h1 align="center">
-        <span style="color:#2574A9">S</span>
-        <span style="color:#2574A9">e</span>
-        <span style="color:#2574A9">r</span>
-        <span style="color:#2574A9">v</span>
-        <span style="color:#2574A9">i</span>
-        <span style="color:#2574A9">c</span>
-        <span style="color:#2574A9">i</span>
-        <span style="color:#2574A9">o</span>
-        <span style="color:#2574A9">s</span>
+        <span style="color:#2574A9">Servicios</span>
     </h1>
     <div class="row">
-        <div class="col-4" *ngFor="let c of categoria">
-            <div class="card card-size card-outline-info cardCategoriasStyle" (click)="verServicio(c.id)"
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12" *ngFor="let c of categoria">
+            <div class="card card-size card-outline-info cardCategorinasStyle" (click)="verServicio(c.id)"
                  align="center">
                 <div class="card-body style-CardBody card" style="">
                     <img src="{{ c.img }}" class="imagen" alt="">

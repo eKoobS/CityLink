@@ -182,7 +182,7 @@
                                     <label class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox"
                                                [(ngModel)]="userRegister.terms" name="terms" checked=" {{ errorTerms? '' : 'errorTerms = false' }} " >
-                                        <!-- [(ngModel)]="userRegister.radioTerms" -->
+                                        <!-- [(ngModel)]="userAuthInterface.radioTerms" -->
                                         <span class="custom-control-indicator"></span>
                                     </label>
                                     <span style="color: #32c787" class=" cursor-pointer custom-control-description {{ errorTerms ? 'errorColor' : ' ' }} " (click)="showInfoTerms(userRegister)">Acepto Términos y Condiciones</span>

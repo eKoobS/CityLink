@@ -1,4 +1,4 @@
-export interface perfil_psInterface {
+export interface providerInterface {
     nombrePrestador: string;
     puntuacion: string;
     telefono: number;
