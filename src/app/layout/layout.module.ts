@@ -15,9 +15,8 @@ import { SearchComponent } from './header/search/search.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
 import {AbbreviateTextPipe} from "../pipes/abbreviate-text.pipe";
-
+import{TabComentariosComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
 import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.component";
-import {tabComentarioComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
 import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
@@ -43,8 +42,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         AbbreviateTextPipe,
         AcercaDeComponent,
         PerfilPSComponent,
-        tabComentarioComponent,
         GaleriaComponent,
+        TabComentariosComponent,
         ComentarioComponent,
         UbicacionComponent
     ],
