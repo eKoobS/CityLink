@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {userProviderService} from "../../../services/userProvider.service";
+import {photoGalleryInterface} from "../../../interfaces/galeria.interface";
+
 
 @Component({
   selector: 'app-galeria',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./galeria.component.scss']
 })
 export class GaleriaComponent implements OnInit {
+    galeriaFotos:photoGalleryInterface[]=[];
 
-  constructor() { }
+  constructor(private psService: userProviderService) {
+
+  }
 
   ngOnInit() {
+      this.galeriaFotos=this.psService.getGalleryPhotos();
+      console.log(this.galeriaFotos);
   }
+
+
 
 }

@@ -8,6 +8,7 @@ import {aboutServiceProviderInterface} from "../../interfaces/acerca_de.interfac
 // servicios
 import {userProviderService} from "../../services/userProvider.service";
 import {alertService} from "../../services/alert.service";
+import {photoGalleryInterface} from "../../interfaces/galeria.interface";
 
 @Component({
     selector: 'app-perfil-ps',
@@ -18,6 +19,7 @@ export class PerfilPSComponent implements OnInit {
 
     //variable para mandar a llamar el servicio tipo []
     datosPsServicio: providerInterface;
+
     showHeart:boolean=false;
     showHeartFull:boolean = true;
     // showHeart:boolean=true;
@@ -31,6 +33,7 @@ export class PerfilPSComponent implements OnInit {
 
     ngOnInit() {
         this.datosPsServicio = this.psService.getProviderInfo();
+
     }
 
 }
