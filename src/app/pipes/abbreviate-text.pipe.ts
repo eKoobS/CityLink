@@ -17,7 +17,6 @@ export class AbbreviateTextPipe implements PipeTransform {
           text += value[i];
         }
       }
-      // text+='...';
     return text;
   }
 

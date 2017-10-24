@@ -5,7 +5,7 @@ import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.componen
 import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
-import {TabComentariosComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
+import {TabComentarioComponent} from "../pages/perfil-ps/tab-comentario/tab-comentario.component";
 
 const LAYOUT_ROUTES: Routes = [
     {
@@ -20,7 +20,7 @@ const LAYOUT_ROUTES: Routes = [
             component: PerfilPSComponent,
             children: [
                 { path: 'acercaDe', component: AcercaDeComponent},
-                { path: 'comentarios', component:TabComentariosComponent },
+                { path: 'comentarios', component:TabComentarioComponent },
                 { path: 'galeria', component: GaleriaComponent},
                 { path: 'ubicacion', component: UbicacionComponent},
                 { path: '**', component: AcercaDeComponent}
