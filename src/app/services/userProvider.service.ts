@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {providerInterface} from "../interfaces/perfil_ps.interface";
 import {aboutServiceProviderInterface} from "../interfaces/acerca_de.interface";
+import {photoGalleryInterface} from "../interfaces/galeria.interface";
 
 @Injectable()
 export class userProviderService {
@@ -45,6 +46,36 @@ export class userProviderService {
         };
 
         return datosAcercaDe;
+    }
+
+    getGalleryPhotos() {
+        let galeriaFotos: photoGalleryInterface [] = [{
+                imageUrl:'../../../../assets/images/trabajoAlbanileria2.JPG',
+            // ../../../assets/images/trabajoAlbanileria2.JPG
+                id: 'albanileria1'
+            },
+            {
+                imageUrl:'../../../../assets/images/trabajoAlbanileria3.JPG',
+                id: 'albanileria2'
+            },
+            {
+                imageUrl:'../../../../assets/images/trabajoCarpinteria1.jpg',
+                id: 'carpinteria1'
+            },
+            {
+                imageUrl:'../../../../assets/images/ciudad.png',
+                id: 'costura1'
+            },
+            {
+                imageUrl:'../../../../assets/images/trabajoHerreria.jpg',
+                id: 'herreria1'
+            },
+            {
+                imageUrl:'../../../../assets/images/trabajoHerreria2.jpg',
+                id: 'herreria2'
+            }]
+
+        return galeriaFotos;
     }
 
 }
