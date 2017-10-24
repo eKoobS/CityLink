@@ -1,0 +1,58 @@
+.section-filtros {
+  position: absolute;
+  width: 300px;
+  height: 100vh;
+  padding-top: 72px;
+}
+
+.filtro-header {
+  text-align: left;
+  font-size: 16px;
+  padding-left: 33px;
+  padding-bottom: 5px;
+}
+
+.texto-filtrar {
+  margin-left: 10px;
+}
+
+.filtro-body {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.filtro-row {
+  margin-bottom: 15px;
+}
+
+.filtro-columna {
+
+}
+
+.filtro-footer {
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.texto-recomendados {
+  margin-left: 10px;
+}
+
+.recomendado-row {
+  margin-bottom: 15px;
+}
+
+.recomendado-columna-imagen {
+
+}
+
+.recomendado-imagen {
+  width: 35px;
+  border-radius: 100%
+}
+
+.recomendado-nombre {
+  position: relative;
+  font-size: 14px;
+  top: 3px;
+}

@@ -1,0 +1,62 @@
+.section-provedores {
+  padding-left: 375px;
+  height: 100vh;
+  padding-top: 95px;
+  padding-right: 75px;
+}
+
+.proveedor-col-imagen {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.provedor-imagen {
+  width: 50%;
+  border-radius: 100%;
+}
+
+.provedor-nombre {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.provedor-col-descripcion {
+  color: gray;
+}
+
+.provedor-descripcion {
+  margin-top: 20px;
+}
+
+.provedor-trabajos-realizados {
+  color: #3498db;
+  top: 6px;
+}
+
+.provedor-estrellas {
+  color: #f1c40f;
+  font-size: 20px;
+}
+
+.provedor-corazon {
+  color: #e74c3c;
+  font-size: 50px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.provedor-columna-botones {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.provedor-ver-perfil {
+  width: 100%;
+  height: 35px;
+}
+
+.provedor-contratar {
+  width: 100%;
+  height: 35px;
+  margin-top: 15px;
+}
