@@ -1,0 +1,73 @@
+<section class="section-filtros">
+
+    <div class="card p-3" style="height: 100vh; overflow-y: auto; padding-bottom: 36px !important;">
+        <div class="card-header filtro-header">
+            <i class="zmdi zmdi-tune zmdi-hc-lg"></i>
+            <span class="texto-filtrar">Filtrar por</span>
+
+            <hr>
+        </div>
+
+        <!--FILTROS-->
+        <div class="card-body filtro-body">
+
+            <div class="row filtro-row">
+                <div class="col-12 filtro-columna">
+                    <label class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Trabajos realizados</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row filtro-row">
+                <div class="col-12 filtro-columna">
+                    <label class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Puntuación</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row filtro-row">
+                <div class="col-12 filtro-columna">
+                    <label class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Cerca de ti</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row filtro-row">
+                <div class="col-12 filtro-columna">
+                    <label class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Disponibles</span>
+                    </label></div>
+            </div>
+
+        </div>
+
+        <!--RECOMENDADOS-->
+        <div class="card-footer filtro-footer">
+
+            <i class="zmdi zmdi-star zmdi-hc-lg"></i>
+            <span class="texto-recomendados">Recomendados</span>
+
+            <hr>
+
+            <div class="row recomendado-row cursor-pointer" *ngFor="let recommended of recommendeds">
+                <div class="col-3 recomendado-columna-imagen p-r-0">
+                    <img src="{{recommended.foto}}" class="recomendado-imagen" alt="">
+                </div>
+                <div class="col-9 p-l-0">
+                    <span class="recomendado-nombre">{{ recommended.nombre }}</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>

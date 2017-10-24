@@ -5,7 +5,8 @@ import {AcercaDeComponent} from "../pages/perfil-ps/acerca-de/acerca-de.componen
 import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
-import {TabComentariosComponent} from "../pages/perfil-ps/tabComentario/tabComentarios.component";
+import {ComentariosComponent} from "../pages/perfil-ps/comentarios/comentarios.component";
+import {PrestadoresServiciosComponent} from "../pages/prestadores-servicios/prestadores-servicios.component";
 
 const LAYOUT_ROUTES: Routes = [
     {
@@ -20,13 +21,14 @@ const LAYOUT_ROUTES: Routes = [
             component: PerfilPSComponent,
             children: [
                 { path: 'acercaDe', component: AcercaDeComponent},
-                { path: 'comentarios', component:TabComentariosComponent },
+                { path: 'comentarios', component: ComentariosComponent },
                 { path: 'galeria', component: GaleriaComponent},
                 { path: 'ubicacion', component: UbicacionComponent},
                 { path: '**', component: AcercaDeComponent}
 
             ]
-        }
+        },
+        {path: 'prestadores-servicios', component: PrestadoresServiciosComponent}
     ]
     }
 ];
