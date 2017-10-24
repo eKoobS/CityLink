@@ -5,6 +5,8 @@ import {GaleriaComponent} from "../pages/perfil-ps/galeria/galeria.component";
 import {UbicacionComponent} from "../pages/perfil-ps/ubicacion/ubicacion.component";
 import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
 import {TabComentarioComponent} from "../pages/perfil-ps/tab-comentario/tab-comentario.component";
+import {PrestadoresServiciosComponent} from "../pages/prestadores-servicios/prestadores-servicios.component";
+
 
 const LAYOUT_ROUTES: Routes = [
     {
@@ -26,7 +28,8 @@ const LAYOUT_ROUTES: Routes = [
                 { path: '**', component: AcercaDeComponent}
 
             ]
-        }
+        },
+        {path: 'prestadores-servicios', component: PrestadoresServiciosComponent}
     ]
     }
 ];

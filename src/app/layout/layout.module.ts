@@ -24,8 +24,16 @@ import {PerfilPSComponent} from "../pages/perfil-ps/perfil-ps.component";
 
 import {alertService} from "../services/alert.service";
 import {userProviderService} from "../services/userProvider.service";
-import {TabComentarioComponent} from "../pages/perfil-ps/tab-comentario/tab-comentario.component";
+
+
 import {ComentarioComponent} from "../pages/perfil-ps/tab-comentario/comentario/comentario.component";
+import {TabComentarioComponent} from "../pages/perfil-ps/tab-comentario/tab-comentario.component";
+
+
+import {PrestadoresServiciosComponent} from "../pages/prestadores-servicios/prestadores-servicios.component";
+import {FiltrosComponent} from "../pages/prestadores-servicios/filtros/filtros.component";
+import {ListaPrestadoresServiciosComponent} from "../pages/prestadores-servicios/lista-prestadores-servicios/lista-prestadores-servicios.component";
+
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -38,15 +46,18 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SearchComponent,
         NavigationComponent,
         NavigationTriggerComponent,
-
         AbbreviateTextPipe,
         AcercaDeComponent,
         PerfilPSComponent,
         GaleriaComponent,
         TabComentarioComponent,
         ComentarioComponent,
-        GaleriaComponent,
-        UbicacionComponent
+        UbicacionComponent,
+        UbicacionComponent,
+        PrestadoresServiciosComponent,
+        FiltrosComponent,
+        ListaPrestadoresServiciosComponent
+
     ],
     imports: [
         CommonModule,
