@@ -52,27 +52,33 @@ export class userProviderService {
         let galeriaFotos: photoGalleryInterface [] = [{
                 imageUrl:'../../../../assets/images/trabajoAlbanileria2.JPG',
             // ../../../assets/images/trabajoAlbanileria2.JPG
-                id: 'albanileria1'
+                id: 'albanileria1',
+                titulo: 'Casa casi terminada'
             },
             {
                 imageUrl:'../../../../assets/images/trabajoAlbanileria3.JPG',
-                id: 'albanileria2'
+                id: 'albanileria2',
+                titulo: 'Cocina terminada'
             },
             {
                 imageUrl:'../../../../assets/images/trabajoCarpinteria1.jpg',
-                id: 'carpinteria1'
+                id: 'carpinteria1',
+                titulo: 'Puertas terminadas '
             },
             {
                 imageUrl:'../../../../assets/images/ciudad.png',
-                id: 'costura1'
+                id: 'costura1',
+                titulo: 'Ciudad?'
             },
             {
                 imageUrl:'../../../../assets/images/trabajoHerreria.jpg',
-                id: 'herreria1'
+                id: 'herreria1',
+                titulo: 'Cerco'
             },
             {
                 imageUrl:'../../../../assets/images/trabajoHerreria2.jpg',
-                id: 'herreria2'
+                id: 'herreria2',
+                titulo: 'Soporte de escalera'
             }]
 
         return galeriaFotos;
