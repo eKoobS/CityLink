@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabComentarioComponent } from './tab-comentario.component';
+import { EnviarComentarioComponent } from './enviar-comentario.component';
 
-describe('TabComentarioComponent', () => {
-  let component: TabComentarioComponent;
-  let fixture: ComponentFixture<TabComentarioComponent>;
+describe('EnviarComentarioComponent', () => {
+  let component: EnviarComentarioComponent;
+  let fixture: ComponentFixture<EnviarComentarioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabComentarioComponent ]
+      declarations: [ EnviarComentarioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabComentarioComponent);
+    fixture = TestBed.createComponent(EnviarComentarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

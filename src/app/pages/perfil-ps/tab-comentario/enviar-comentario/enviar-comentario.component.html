@@ -1,0 +1,25 @@
+<section>
+  <div class="">
+    <div class="row">
+      <div class="col-1" style="margin-top: 3%;margin-left: 1%;">
+        <img  class="styleUserPhoto" src="{{userPhoto}}" alt="userPhoto">
+      </div>
+      <div class="col-8" style="margin-top: 2%;">
+        <div class="row">
+          <!--<div class="col-12"><h4> {{userName}} </h4> </div>-->
+        </div>
+        <textarea class="form-control"  #textoComentario (keyup.enter)="sendComment(textoComentario.value);textoComentario.value=null;"  placeholder="Escribe un comentario" cols="30" rows="5"></textarea>
+      </div>
+      <div class="col-1" style="margin-top: 5%" align="center">
+        <div class="btnSend">
+          <i class="zmdi zmdi-mail-send mt-25" (click)="sendComment(textoComentario.value); textoComentario.value= null"></i>
+        </div>
+      </div>
+      <div class="col-1" style="margin-top: 5%" align="center" >
+        <div class="btnAdd">
+          <i class="zmdi zmdi-attachment-alt mt-25"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

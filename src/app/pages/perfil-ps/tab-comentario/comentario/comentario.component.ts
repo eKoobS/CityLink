@@ -1,35 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import{AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
-import{observable} from "rxjs/symbol/observable";
+import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
+import {observable} from "rxjs/symbol/observable";
 
 
 @Component({
-  selector: 'app-comentario',
-  templateUrl: './comentario.component.html',
-  styleUrls: ['./comentario.component.scss']
+    selector: 'app-comentario',
+    templateUrl: './comentario.component.html',
+    styleUrls: ['./comentario.component.scss'],
+    inputs: ['photo', 'userName', 'comment', 'date','hola']
 })
 export class ComentarioComponent implements OnInit {
 
-  userEmail:string;
-  userName:string;
-  userPhoto:string;
-  comments:FirebaseListObservable<any>;
+    comments:FirebaseListObservable<any[]>;
 
-  constructor(db: AngularFireDatabase,private  afAuth:AngularFireAuth) {
-    this.getUserData()
-      this.comments=db.list('/comentarios')
-  }
+    constructor(private af:AngularFireDatabase) {
 
+    }
 
-  ngOnInit() {
-  }
-    getUserData(){
-        this.afAuth.auth.onAuthStateChanged((user)=>{
-            this.userEmail=user.email;
-            this.userName=user.displayName;
-            this.userPhoto=user.photoURL;
-            console.log(this.userPhoto)
-        })
+    ngOnInit() {
+        this.comments=this.af.list('prestadoresServicios/servicios/comentarios');
     }
 }
