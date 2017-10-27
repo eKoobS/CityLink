@@ -1,22 +1,54 @@
-<<<<<<< HEAD
-<p>
-  comentario works!
-</p>
-=======
+<!--<div class="row">-->
+<!--<div class="col-4">-->
+<!--<img [src]="photo" alt="" style="width: 100px">-->
+<!--</div>-->
+<!--<div class="col-4">-->
+<!--{{ userName }}-->
+<!--</div>-->
+<!--<div class="col-4">-->
+<!--{{ comment }}-->
+<!--</div>-->
+<!--</div>-->
 <section>
-<div class="containterComment">
-    <div class="row">
-        <div class="col-1" style="margin-top: 3%;margin-left: 1%;">
-            <img  class="styleUserPhoto" src="{{userPhoto}}" alt="userPhoto">
-        </div>
-        <div class="col-8" style="margin-top: 2%;">
-            <h4> {{userName}} </h4>
-            <textarea name="" style="width: 100%" placeholder="Escribe un comentario"></textarea>
-        </div>
-        <div class="col-2" style="margin-top: 6%">
-            <button class="btn btn-success"style="width:90%">Enviar</button>
+    <div class="row cardComment">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-1" style="margin-top: 2%;">
+                    <img [src]="photo" class="userPhotoStyle" alt="photoUser">
+                </div>
+                <div class="col-11" style="margin-top: 23px">
+
+                    <div class="row">
+                        <div class="col-10">
+                            <span class="d-block" style="font-size: 14px">{{ userName }}</span>
+                            <span style="font-size: 10px; color: lightslategrey;">{{ date | formatDate }}</span>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-outline-info">Comentar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-t-15">
+                        <!--<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad deleniti distinctio-->
+                        <!--doloremque earum excepturi exercitationem illum incidunt iste laudantium magnam molestiae, molestias-->
+                        <!--necessitatibus quam quas ratione tempora temporibus voluptate.-->
+                        <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, architecto beatae cum dolore-->
+                        <!--enim fugit hic illo maiores quis quo velit voluptatem. Alias atque cumque dolor dolore, facilis-->
+                        <!--labore reiciendis.</P>-->
+                    <p>{{ comment }}</p>
+
+                </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-12" align="left">
+                <span class="cursor-pointer m-l-5" style="color:cadetblue"> <i class="zmdi zmdi-comment-more m-r-5" ></i> Ver 5 comentarios más</span>
+              </div>
+            </div>
         </div>
     </div>
-</div>
 </section>
->>>>>>> origin/master
+

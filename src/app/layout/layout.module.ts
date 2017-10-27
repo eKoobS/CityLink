@@ -33,6 +33,10 @@ import {TabComentarioComponent} from "../pages/perfil-ps/tab-comentario/tab-come
 import {PrestadoresServiciosComponent} from "../pages/prestadores-servicios/prestadores-servicios.component";
 import {FiltrosComponent} from "../pages/prestadores-servicios/filtros/filtros.component";
 import {ListaPrestadoresServiciosComponent} from "../pages/prestadores-servicios/lista-prestadores-servicios/lista-prestadores-servicios.component";
+import {EnviarComentarioComponent} from "../pages/perfil-ps/tab-comentario/enviar-comentario/enviar-comentario.component";
+import {AngularFireModule} from "angularfire2";
+import {AngularFireDatabase} from "angularfire2/database";
+import {FormatDatePipe} from "../pipes/formatDate.pipe";
 
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -56,13 +60,16 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         UbicacionComponent,
         PrestadoresServiciosComponent,
         FiltrosComponent,
-        ListaPrestadoresServiciosComponent
+        ListaPrestadoresServiciosComponent,
+        EnviarComentarioComponent,
+        FormatDatePipe
 
     ],
     imports: [
         CommonModule,
         LayoutRouting,
         FormsModule,
+        AngularFireModule,
         BsDropdownModule.forRoot(),
         ProgressbarModule.forRoot(),
         ButtonsModule.forRoot(),
@@ -70,6 +77,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ],
     providers: [
         alertService,
+        AngularFireDatabase,
         userProviderService
     ]
 })
